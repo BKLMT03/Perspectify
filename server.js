@@ -1,4 +1,4 @@
-onst path = require('path')
+const path = require('path')
 const express = require('express');
 const dotenv = require('dotenv')
 const colors = require('colors')
@@ -7,9 +7,7 @@ const connectDB = require('./config/db')
 
 dotenv.config({path: './config/config.env'})
 
-connectDB();
-
-const transactions = require('./routes/transactions')
+// connectDB();
 
 const app = express();
 
@@ -19,7 +17,7 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 //whenever we reach localhost/api/v1/transactions, it should route to transactions.js
-app.use('/api/v1/transactions', transactions)
+// app.use('/api/v1/transactions', transactions)
 
 //production deployment after running npm run build and having build folder
 if (process.env.NODE_ENV === 'production') {
