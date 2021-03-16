@@ -1,9 +1,12 @@
 import './App.css';
+import Header from './components/Header'
+import Trending from './components/Trending'
 
 function App() {
   return (
     <div className="App">
-      <h1> Presentify</h1>
+      <Header />
+      <Trending />
     </div>
   );
 }
