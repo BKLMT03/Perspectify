@@ -9,6 +9,8 @@ dotenv.config({path: './config/config.env'})
 
 connectDB();
 
+const comments = require('./routes/comments')
+
 const app = express();
 
 app.use(express.json())
