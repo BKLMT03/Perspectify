@@ -16,8 +16,8 @@ if (process.env.NODE_ENV === 'development') {
     app.use(morgan('dev'))
 }
 
-//whenever we reach localhost/api/v1/transactions, it should route to transactions.js
-// app.use('/api/v1/transactions', transactions)
+//whenever we reach localhost/api/v1/comments, it should route to comments.js
+app.use('/api/v1/comments', comments)
 
 //production deployment after running npm run build and having build folder
 if (process.env.NODE_ENV === 'production') {
