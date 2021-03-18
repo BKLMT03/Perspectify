@@ -26,7 +26,6 @@ function App () {
               {/* <Route exact path='/savedarticles' component={SavedArticles} /> */}
             </Col>
           </Row>
-          <Trending />
         </Container>
       </Router>
     </div>
