@@ -8,7 +8,7 @@ function Navbar () {
       <li className='nav-item'>
         <Link
           className='nav-link'
-          to='/greatesthits'
+          to='/'
           style={{ color: 'darkslategray', textShadow: '1px 1px black' }}
         >
           Home
