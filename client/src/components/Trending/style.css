@@ -1,0 +1,11 @@
+.trending {
+    font-family: "Special Elite", cursive;
+    color: rgb(42, 24, 24);
+    text-shadow: 0 0 5px rgb(65, 0, 0);
+    font-size: 2rem;
+    letter-spacing: 1px;
+}
+
+.topics {
+    display: inline-block;
+}
