@@ -12,7 +12,6 @@ function Logo () {
           <span className='y'>y</span>
           <span className='period'>.</span>
         </h1>
-        <h3 className="subtitle mt-5">Earn Your Opinion</h3>
       </Row>
     </div>
   )

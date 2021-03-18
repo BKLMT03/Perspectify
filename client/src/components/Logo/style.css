@@ -2,12 +2,15 @@
     font-family: "Special Elite", cursive;
     text-shadow: 0 0 8px rgb(58, 55, 55);
     font-size: 4rem;
+    letter-spacing: 5px;
 }
 
 .subtitle {
     font-family: "Special Elite", cursive;
     text-shadow: 0 0 5px rgb(56, 56, 56);
-    font-size: 2rem
+    font-size: 2rem;
+    letter-spacing: 4px;
+    
 }
 
 .i {
