@@ -3,7 +3,7 @@ import './style.css'
 
 function Header () {
   return (
-    <div className='container text-center header'>
+    <div className='container text-center header mb-5'>
       <h3 className='subtitle mt-5'>Earn Your Opinion</h3>
 
       <p>
