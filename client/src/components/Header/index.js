@@ -11,12 +11,12 @@ function Header () {
       </p>
       <p>
         Find the latest news on trending topics from a variety of news sources
-        from around the world and across political spectra.
+        and various points of view.
       </p>
-      <p>Sign up and discuss topics with other PERSPECTIFIED minds.</p>
+      <p>Sign up to discuss with other PERSPECTIFIED minds.</p>
 
-      <button> Login </button>
-      <button> Sign Up</button>
+      <button type="button" className="btn btn-light btn-lg mx-5"> Login </button>
+      <button type="button" className="btn btn-light btn-lg mx-5"> Sign Up </button>
     </div>
   )
 }
