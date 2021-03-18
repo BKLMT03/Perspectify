@@ -1,0 +1,27 @@
+.logo {
+    font-family: "Special Elite", cursive;
+    text-shadow: 0 0 8px rgb(58, 55, 55);
+    font-size: 4rem;
+}
+
+.subtitle {
+    font-family: "Special Elite", cursive;
+    text-shadow: 0 0 5px rgb(56, 56, 56);
+    font-size: 2rem
+}
+
+.i {
+    color: rgb(175, 0, 0)
+}
+
+.f {
+    color: rgb(0, 0, 200)
+}
+
+.y {
+    color: rgb(231, 209, 8)
+}
+
+.period {
+    color: green
+}
