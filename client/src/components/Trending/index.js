@@ -1,5 +1,6 @@
 import React from 'react'
-import Topic from '../Topic'
+import Article from "../Article"
+// import Topic from '../Topic'
 import Row from '../Row'
 import "./style.css"
 
@@ -13,7 +14,7 @@ const Trending = () => {
           {arr.map(item => {
             return (
               <div className='topics'>
-                <Topic />
+                <Article />
               </div>
             )
           })}
