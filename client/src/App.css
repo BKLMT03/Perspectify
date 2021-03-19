@@ -1,44 +1,27 @@
 :root {
---box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    --box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
 
 * {
-box-sizing: border-box;
+    box-sizing: border-box;
+    background-color: rgb(228, 228, 228);
 }
 
 h1 {
-letter-spacing: 1px;
-margin: 0;
-text-align: center;
+    text-align: center;
 }
 
 h3 {
-border-bottom: 1px solid #bbb;
-padding-bottom: 10px;
-margin: 40px 0 10px;
-text-align: center;
+    text-align: center;
 }
 
 h4 {
-margin: 0;
-text-transform: uppercase;
-}
-
-.container {
-    margin: 30px auto;
-    width: 200px;
-    display:inline-block;
-}
-
-.topic {
-    width: 100px;
-    height: 100px;
-    background-color: aquamarine;
-    flex-direction: row;
+    margin: 0;
+    text-transform: uppercase;
 }
 
 @media (max-width: 320px) {
-.container {
-    width: 300px;
+    .container {
+        width: 300px;
     }
 }
