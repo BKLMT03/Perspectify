@@ -1,3 +1,15 @@
-.card {
+.btn-deeper {
+    background-color: rgb(108, 153, 108);
+    color: white;
+}
+
+.btn-size {
+    
+}
+
+.article {
+    margin: 10px;
+    box-shadow: 0 0 3px rgb(122, 122, 122);
     font-family: "Special Elite", cursive;
+
 }
