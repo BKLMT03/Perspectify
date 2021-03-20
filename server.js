@@ -7,6 +7,7 @@ const connectDB = require('./config/db')
 
 dotenv.config({path: './config/config.env'})
 
+//connect to mongodb
 connectDB();
 
 const comments = require('./routes/comments')
