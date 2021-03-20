@@ -22,7 +22,7 @@ const Trending = (props) => {
         </div>
       </Row>
 
-      <div class='container input-group pb-3 my-5'>
+      <div class='container input-group pb-3 my-3'>
         <input
           type='text'
           class='form-control'
