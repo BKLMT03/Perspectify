@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 import "./style.css"
 
 const Article = () => {
@@ -10,8 +11,14 @@ const Article = () => {
         <p className='card-text'>
           Some Sample Text
         </p>
-        <button className='btn btn-light'>
-          Go Deeper
+        <button className='btn btn-light' type="onClick" href="/Discussion">
+        <Link
+          className='nav-link'
+          to='/Discussion'
+          
+        >
+          Discussion
+        </Link>
         </button>
       </div>
     </div>

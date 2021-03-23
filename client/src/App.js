@@ -8,6 +8,8 @@ import Container from './components/Container'
 import Col from './components/Col'
 import Navbar from './components/Navbar'
 import Row from './components/Row'
+import ArticleDiscussionPage from './components/pages/ArticleDiscussionPage'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App () {
   return (
@@ -15,7 +17,7 @@ function App () {
       <Logo />
       <Router>
         <Container>
-          <Header />
+          {/* <Header /> */}
           <Row>
             <Col size='1'>
               <Navbar />
@@ -23,6 +25,7 @@ function App () {
             <Col size='10'>
               <Route exact path='/' component={Trending} />
               <Route exact path='/home' component={Trending} />
+              <Route exact path='/Discussion' component={ArticleDiscussionPage} />
               {/* <Route exact path='/savedarticles' component={SavedArticles} /> */}
             </Col>
           </Row>
