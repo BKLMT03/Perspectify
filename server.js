@@ -20,7 +20,7 @@ if (process.env.NODE_ENV === 'development') {
     app.use(morgan('dev'))
 }
 
-//whenever we reach localhost/api/v1/comments, it should route to comments.js
+//whenever we reach localhost/api/v1/comments or users, it should route to comments.js or user.js
 app.use('/api/v1/comments', comments)
 app.use('/api/v1/users', users)
 
