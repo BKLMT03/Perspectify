@@ -32,7 +32,8 @@ const Trending = (props) => {
     const key = newsApiKeys[Math.floor(Math.random() * Math.floor(newsApiKeys.length))]
     console.log(key)
     console.log("generating news....")
-    const queryNewsData = await axios.get("https://newsapi.org/v2/top-headlines?q="+ searchQuery + "&apiKey=" + key)
+
+    const queryNewsData = await axios.get("https://newsapi.org/v2/everything?q=" + searchQuery + "&language=en&sortBy=popularity&apiKey=" + key)
     console.log(queryNewsData)
     for (let i = 0; i < 5; i++) {
       top5.push(queryNewsData.data.articles[i])
