@@ -1,8 +1,6 @@
 import './App.css'
 import React from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
-import Header from './components/Header'
-import Trending from './components/Trending'
 import Logo from './components/Logo'
 import Container from './components/Container'
 import Col from './components/Col'
@@ -10,6 +8,7 @@ import Navbar from './components/Navbar'
 import Row from './components/Row'
 import ArticleDiscussionPage from './components/pages/ArticleDiscussionPage'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Home from "./pages/Home"
 
 function App () {
   return (

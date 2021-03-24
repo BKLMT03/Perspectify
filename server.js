@@ -7,9 +7,11 @@ const connectDB = require('./config/db')
 
 dotenv.config({path: './config/config.env'})
 
+//connect to mongodb
 connectDB();
 
 const comments = require('./routes/comments')
+const users = require('./routes/users')
 
 const app = express();
 
@@ -20,6 +22,7 @@ if (process.env.NODE_ENV === 'development') {
 
 //whenever we reach localhost/api/v1/comments, it should route to comments.js
 app.use('/api/v1/comments', comments)
+app.use('/api/v1/users', users)
 
 //production deployment after running npm run build and having build folder
 if (process.env.NODE_ENV === 'production') {
