@@ -1,12 +1,13 @@
 import {useState, useEffect, React} from 'react'
 import axios from 'axios'
 import newsApiKeys from '../../config/apikeys'
-import Carosel from "../Carousel/Carosel";
+import Carousel from "../Carousel/Carosel";
 import "./ArticleDiscussionPage.css";
 
-function ArticleDiscussionPage(props) {
+const ArticleDiscussionPage = (props) => {
   const [comment, setComment] = useState([{ commentMessage: "test111" }]);
   const [articleData, setArticleData] = useState([]);
+  const [activeArticle, setActiveArticle] = useState('')
   const top5 = []
 
   const queryNewsApi = async () => {
@@ -23,11 +24,10 @@ function ArticleDiscussionPage(props) {
     }
     console.log(top5)
     setArticleData(top5)
+    setActiveArticle(props.location.state.url)
   }
 
   useEffect(async () => {
-    // await setPassedQuery(props.location.state.query)
-    // console.log(passedQuery)
     await queryNewsApi();
   }, []) 
 
@@ -87,7 +87,7 @@ function ArticleDiscussionPage(props) {
           </div>
         );
       })}
-      <Carosel />
+      <Carousel data={articleData}/>
     </div>
   );
 }

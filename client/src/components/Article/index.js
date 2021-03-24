@@ -17,7 +17,8 @@ const Article = ({query, title, description, url, image, date}) => {
           // to='/Discussion'
           to={{
             pathname: "/Discussion",
-            state: {query: query}
+            state: {query: query,
+                    url: url}
           }}
           
         >
