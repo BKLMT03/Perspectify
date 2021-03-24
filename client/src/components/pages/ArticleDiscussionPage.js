@@ -27,8 +27,28 @@ const ArticleDiscussionPage = (props) => {
     setActiveArticle(props.location.state.url)
   }
 
+  const getComments = async () => {
+    try {
+    const res = await axios.get('/api/v1/comments');
+    console.log(res.status())  
+    } catch (error) {
+    
+    
+    }
+  }
+
+  const addComments = async () => {
+    try {
+    const res = await axios.post('/api/v1/comments');
+    
+    } catch (error) {
+      
+    }
+  }
+
   useEffect(async () => {
     await queryNewsApi();
+    
   }, []) 
 
   const handelChange = (e, index) => {
@@ -41,6 +61,7 @@ const ArticleDiscussionPage = (props) => {
   };
   const handelAddInput = () => {
     setComment([...comment, { commentMessage: "" }]);
+    console.log(getComments());
   };
 
   const handelRemoveInput = (index) => {
