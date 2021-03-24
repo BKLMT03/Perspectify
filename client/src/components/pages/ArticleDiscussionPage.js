@@ -1,9 +1,35 @@
-import React, { useEffect, useState } from "react";
+import {useState, useEffect, React} from 'react'
+import axios from 'axios'
+import newsApiKeys from '../../config/apikeys'
 import Carosel from "../Carousel/Carosel";
 import "./ArticleDiscussionPage.css";
 
-function ArticleDiscussionPage() {
+function ArticleDiscussionPage(props) {
   const [comment, setComment] = useState([{ commentMessage: "test111" }]);
+  const [articleData, setArticleData] = useState([]);
+  const top5 = []
+
+  const queryNewsApi = async () => {
+    const key = newsApiKeys[Math.floor(Math.random() * Math.floor(newsApiKeys.length))]
+    console.log(key)
+    console.log("generating news....")
+
+
+    // const queryNewsData = await axios.get("https://newsapi.org/v2/everything?q=" + searchQuery + "&language=en&sortBy=popularity&apiKey=" + key)
+    const queryNewsData = await axios.get("https://newsapi.org/v2/everything?qInTitle=" + props.location.state.query + "&language=en&sortBy=popularity&apiKey=" + key)
+    console.log(queryNewsData)
+    for (let i = 0; i < 5; i++) {
+      top5.push(queryNewsData.data.articles[i])
+    }
+    console.log(top5)
+    setArticleData(top5)
+  }
+
+  useEffect(async () => {
+    // await setPassedQuery(props.location.state.query)
+    // console.log(passedQuery)
+    await queryNewsApi();
+  }, []) 
 
   const handelChange = (e, index) => {
     const { name, value } = e.target;

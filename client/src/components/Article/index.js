@@ -2,7 +2,7 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import "./style.css"
 
-const Article = ({title, description, url, image, date}) => {
+const Article = ({query, title, description, url, image, date}) => {
   return (
     <div className='card m-3 shadow-sm' style={{width: "15rem"}}>
       <img src={image} className='card-img-top' alt='...' style={{width: "150px", height: "150px"}} />
@@ -14,7 +14,11 @@ const Article = ({title, description, url, image, date}) => {
         <button className='btn btn-light' type="onClick" href="/Discussion">
         <Link
           className='nav-link'
-          to='/Discussion'
+          // to='/Discussion'
+          to={{
+            pathname: "/Discussion",
+            state: {query: query}
+          }}
           
         >
           Discussion
