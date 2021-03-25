@@ -26,7 +26,7 @@ function Navbar () {
       <li className='nav-item'>
         <Link
           className='nav-link'
-          to='/'
+          to='/login'
           style={{ color: 'darkslategray', textShadow: '1px 1px black' }}
         >
           LOG IN
@@ -35,7 +35,7 @@ function Navbar () {
       <li className='nav-item'>
         <Link
           className='nav-link'
-          to='/'
+          to='/sign-up'
           style={{ color: 'darkslategray', textShadow: '1px 1px black' }}
         >
           SIGN UP
