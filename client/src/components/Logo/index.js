@@ -4,7 +4,7 @@ import './style.css'
 
 function Logo () {
   return (
-    <div className='my-5'>
+    <div className='mt-5 mb-2'>
       <Row>
         <h1 className='logo'>
           Perspect<span className='i'>i</span>

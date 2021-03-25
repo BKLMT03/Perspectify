@@ -4,12 +4,12 @@ import './style.css'
 
 function Navbar () {
   return (
-    <nav className='nav flex-columnn link-dark justify-content-center'>
+    <nav className='nav flex-columnn justify-content-center'>
       <li className='nav-item'>
         <Link
           className='nav-link'
           to='/'
-          style={{ color: 'darkslategray', textShadow: '1px 1px black' }}
+          style={{ color: 'black', textShadow: '0 0 3px black' }}
         >
           Home
         </Link>
@@ -18,7 +18,7 @@ function Navbar () {
         <Link
           className='nav-link'
           to='contact'
-          style={{ color: 'darkslategray', textShadow: '1px 1px black' }}
+          style={{ color: 'black', textShadow: '0 0 3px black' }}
         >
           Saved Articles
         </Link>
@@ -27,7 +27,7 @@ function Navbar () {
         <Link
           className='nav-link'
           to='/'
-          style={{ color: 'darkslategray', textShadow: '1px 1px black' }}
+          style={{ color: 'black', textShadow: '0 0 3px black' }}
         >
           LOG IN
         </Link>
@@ -36,7 +36,7 @@ function Navbar () {
         <Link
           className='nav-link'
           to='/'
-          style={{ color: 'darkslategray', textShadow: '1px 1px black' }}
+          style={{ color: 'black', textShadow: '0 0 3px black' }}
         >
           SIGN UP
         </Link>
@@ -45,7 +45,7 @@ function Navbar () {
         <Link
           className='nav-link'
           to='/Discussion'
-          style={{ color: 'darkslategray', textShadow: '1px 1px black' }}
+          style={{ color: 'black', textShadow: '0 0 3px black' }}
         >
           Discussion
         </Link>
