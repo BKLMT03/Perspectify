@@ -1,9 +1,54 @@
-import React, { useEffect, useState } from "react";
-import Carosel from "../Carousel/Carosel";
+import {useState, useEffect, React} from 'react'
+import axios from 'axios'
+import newsApiKeys from '../../config/apikeys'
+import Carousel from "../Carousel/Carosel";
 import "./ArticleDiscussionPage.css";
 
-function ArticleDiscussionPage() {
+const ArticleDiscussionPage = (props) => {
   const [comment, setComment] = useState([{ commentMessage: "test111" }]);
+  const [articleData, setArticleData] = useState([]);
+  const [activeArticle, setActiveArticle] = useState('')
+  const top5 = []
+
+  const queryNewsApi = async () => {
+    const key = newsApiKeys[Math.floor(Math.random() * Math.floor(newsApiKeys.length))]
+    console.log(key)
+    console.log("generating news....")
+
+
+    // const queryNewsData = await axios.get("https://newsapi.org/v2/everything?q=" + searchQuery + "&language=en&sortBy=popularity&apiKey=" + key)
+    const queryNewsData = await axios.get("https://newsapi.org/v2/everything?qInTitle=" + props.location.state.query + "&language=en&sortBy=popularity&apiKey=" + key)
+    console.log(queryNewsData)
+    for (let i = 0; i < 5; i++) {
+      top5.push(queryNewsData.data.articles[i])
+    }
+    console.log(top5)
+    setArticleData(top5)
+    setActiveArticle(props.location.state.url)
+  }
+
+  const getComments = async () => {
+    try {
+    const res = await axios.get('/api/v1/comments', {params: {topic: props.location.state.query}});
+    } catch (error) {
+    
+    
+    }
+  }
+
+  const addComments = async () => {
+    try {
+    const res = await axios.post('/api/v1/comments');
+    
+    } catch (error) {
+      
+    }
+  }
+
+  useEffect(async () => {
+    await queryNewsApi();
+    
+  }, []) 
 
   const handelChange = (e, index) => {
     const { name, value } = e.target;
@@ -15,6 +60,7 @@ function ArticleDiscussionPage() {
   };
   const handelAddInput = () => {
     setComment([...comment, { commentMessage: "" }]);
+    getComments();
   };
 
   const handelRemoveInput = (index) => {
@@ -61,7 +107,7 @@ function ArticleDiscussionPage() {
           </div>
         );
       })}
-      <Carosel />
+      <Carousel data={articleData}/>
     </div>
   );
 }

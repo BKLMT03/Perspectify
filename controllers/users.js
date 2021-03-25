@@ -1,13 +1,11 @@
-const Comment = require('../models/Comment')
+const User = require('../models/User')
 
-exports.getComments = async (req, res, next) => {
-    const {topic} = req.params;
+exports.getUsers = async (req, res, next) => {
     try {
-        const comments = await Comment.find({topic: topic})
+        const user = await User.find();
         return res.status(200).json({
             success: true,
-            count: comments.length,
-            data: comments
+            data: user
         })
     } catch (error) {
         return res.status(500).json({
@@ -17,14 +15,13 @@ exports.getComments = async (req, res, next) => {
     }
 }
 
-exports.addComment = async (req, res, next) => {
+exports.addUser = async (req, res, next) => {
     try {
-        const {topic, name_first, name_last, text} = req.body;
-        const comment = await Comment.create(req.body)
-
+        const {first_name, last_name, email, password, image} = req.body;
+        const user = await User.create(req.body);
         return res.status(201).json({
             success: true,
-            data: comment
+            data: user
     })
     } catch (error) {
         if (err.name === 'ValidationError') {
