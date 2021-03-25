@@ -4,18 +4,27 @@
     font-size: 5rem;
     letter-spacing: 13px;
 }
+
 .i {
-    color: rgb(175, 0, 0)
+    color: rgb(175, 0, 0);
+    font-family: "Special Elite", cursive;
+
 }
 
 .f {
-    color: rgb(0, 0, 200)
+    color: rgb(0, 0, 200);
+    font-family: "Special Elite", cursive;
+
 }
 
 .y {
-    color: rgb(231, 209, 8)
+    color: rgb(231, 209, 8);
+    font-family: "Special Elite", cursive;
+
 }
 
 .period {
-    color: green
+    color: green;
+    font-family: "Special Elite", cursive;
+
 }

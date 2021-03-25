@@ -3,7 +3,7 @@ import axios from 'axios'
 import Article from '../Article'
 import Container from '../Container'
 import Header from '../Header'
-import Row from '../Row'
+import Row from "react-bootstrap/Row"
 import news from '../../testnewsdata'
 import newsApiKeys from '../../config/apikeys'
 import './style.css'
@@ -90,31 +90,33 @@ const Trending = props => {
           </div>
         </Row>
 
-        <div class='container input-group pb-3 my-3'>
-          <form
-            onSubmit={e => {
-              e.preventDefault()
-              queryNewsApi()
-            }}
-          >
-            <input
-              type='text'
-              class='form-control'
-              placeholder='Search for a topic'
-              aria-label='Search for a topic'
-              aria-describedby='button-addon2'
-              onChange={e => setSearchQuery(e.target.value)}
-            />
-            <button
-              class='btn btn-outline-secondary'
-              type='button'
-              id='button-addon2'
-              onClick={() => queryNewsApi()}
+        <Row >
+          <div className='input-group pb-3 my-3 justify-content-center'>
+            <form
+              onSubmit={e => {
+                e.preventDefault()
+                queryNewsApi()
+              }}
             >
-              Search
-            </button>
-          </form>
-        </div>
+              <input
+                type='text'
+                className='form-control'
+                placeholder='Search for a topic'
+                aria-label='Search for a topic'
+                aria-describedby='button-addon2'
+                onChange={e => setSearchQuery(e.target.value)}
+              />
+              <button
+                className='btn btn-outline-secondary mt-3'
+                type='button'
+                id='button-addon2'
+                onClick={() => queryNewsApi()}
+              >
+                Search
+              </button>
+            </form>
+          </div>
+        </Row>
       </div>
     </Container>
   )
