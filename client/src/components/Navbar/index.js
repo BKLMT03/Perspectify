@@ -26,7 +26,7 @@ function Navbar () {
       <li className='nav-item mb-2'>
         <Link
           className='nav-link'
-          to='/'
+          to='/login'
           style={{ color: 'black', textShadow: '0 0 3px black' }}
         >
           LOG IN
@@ -35,7 +35,7 @@ function Navbar () {
       <li className='nav-item mb-2'>
         <Link
           className='nav-link'
-          to='/'
+          to='/sign-up'
           style={{ color: 'black', textShadow: '0 0 3px black' }}
         >
           SIGN UP
