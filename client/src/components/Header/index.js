@@ -27,21 +27,6 @@ function Header () {
         </p>
         <p>Sign up to discuss with other PERSPECTIFIED minds.</p>
       </Row>
-      <Row className="justify-content-md-center">
-        <Col xs>
-          <Button>Log In</Button>
-        </Col>
-        <Col></Col>
-        <Col xs>
-          <Button>Sign Up</Button>
-        </Col>
-        {/* <button type='button' className='btn btn-light btn-lg mx-3'>
-          Sign Up
-        </button>
-        <button type='button' className='btn btn-light btn-lg mx-3'>
-          Login
-        </button> */}
-      </Row>
     </div>
   )
 }
