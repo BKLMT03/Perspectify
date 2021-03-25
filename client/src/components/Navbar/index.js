@@ -5,7 +5,7 @@ import './style.css'
 function Navbar () {
   return (
     <nav className='nav flex-columnn justify-content-center'>
-      <li className='nav-item'>
+      <li className='nav-item mb-2'>
         <Link
           className='nav-link'
           to='/'
@@ -14,16 +14,16 @@ function Navbar () {
           Home
         </Link>
       </li>
-      <li className='nav-item'>
+      <li className='nav-item mb-2'>
         <Link
           className='nav-link'
           to='contact'
           style={{ color: 'black', textShadow: '0 0 3px black' }}
         >
-          Saved Articles
+          My Profile
         </Link>
       </li>
-      <li className='nav-item'>
+      <li className='nav-item mb-2'>
         <Link
           className='nav-link'
           to='/'
@@ -32,7 +32,7 @@ function Navbar () {
           LOG IN
         </Link>
       </li>
-      <li className='nav-item'>
+      <li className='nav-item mb-2'>
         <Link
           className='nav-link'
           to='/'
@@ -41,7 +41,7 @@ function Navbar () {
           SIGN UP
         </Link>
       </li>
-      <li className='nav-item'>
+      <li className='nav-item mb-2'>
         <Link
           className='nav-link'
           to='/Discussion'
