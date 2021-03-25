@@ -29,8 +29,7 @@ const ArticleDiscussionPage = (props) => {
 
   const getComments = async () => {
     try {
-    const res = await axios.get('/api/v1/comments');
-    console.log(res.status())  
+    const res = await axios.get('/api/v1/comments', {params: {topic: props.location.state.query}});
     } catch (error) {
     
     
@@ -61,7 +60,7 @@ const ArticleDiscussionPage = (props) => {
   };
   const handelAddInput = () => {
     setComment([...comment, { commentMessage: "" }]);
-    console.log(getComments());
+    getComments();
   };
 
   const handelRemoveInput = (index) => {
