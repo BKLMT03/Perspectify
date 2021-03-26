@@ -1,14 +1,25 @@
 const Comment = require('../models/Comment')
 
 exports.getComments = async (req, res, next) => {
-    const {topic} = req.params;
+    const body = req.body;
+    const query = req.query;
+    const param = req.params;
+    console.log(req)
+    //this should equal search query passed in
+    console.log(query)
     try {
-        const comments = await Comment.find({topic: topic})
-        return res.status(200).json({
-            success: true,
-            count: comments.length,
-            data: comments
-        })
+        const comments = await Comment.find(query)
+        // const comments = await Comment.find()
+        console.log(comments)
+        if (comments.length > 0) {
+            return res.status(200).json({
+                data: comments
+            })
+        } else {
+            return res.status(200).json({
+                message: "No comments regarding this topic to show!"
+            })
+        }
     } catch (error) {
         return res.status(500).json({
             success: false,

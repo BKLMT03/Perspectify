@@ -6,6 +6,7 @@ import "./ArticleDiscussionPage.css";
 
 const ArticleDiscussionPage = (props) => {
   const [comment, setComment] = useState([{ commentMessage: "test111" }]);
+  const [comments, setComments] = useState([]);
   const [articleData, setArticleData] = useState([]);
   const [activeArticle, setActiveArticle] = useState('')
   const top5 = []
@@ -28,12 +29,22 @@ const ArticleDiscussionPage = (props) => {
   }
 
   const getComments = async () => {
+    const config = {
+      headers: {
+          'Content-type': 'application/json'
+      }
+    }
     try {
-    const res = await axios.get('/api/v1/comments', {params: {topic: props.location.state.query}});
+    console.log(props.location.state.query)
+    const res = await axios.get('/api/v1/comments', {params: {topic: props.location.state.query}} );
+    // const res = await axios.get('/api/v1/comments');
+    setComments(res.data.data);
+    
     } catch (error) {
     
     
     }
+    console.log(comments)
   }
 
   const addComments = async () => {
@@ -47,7 +58,7 @@ const ArticleDiscussionPage = (props) => {
 
   useEffect(async () => {
     await queryNewsApi();
-    
+    await getComments();
   }, []) 
 
   const handelChange = (e, index) => {
@@ -78,10 +89,8 @@ const ArticleDiscussionPage = (props) => {
       <div>
         <h2>Leave Your Comment</h2>
       </div>
-
-      {comment.map((item, i) => {
-        return (
-          <div key={i} className="textBox">
+      <div className="textBox">
+        {/* add key={i} next to class name above */}
             <form>
               <textarea
                 name="commentMessage"
@@ -89,21 +98,29 @@ const ArticleDiscussionPage = (props) => {
                 className="mr10"
                 row="3"
                 id="commentText"
-                value={item.commentMessage}
-                onChange={(e) => handelChange(e, i)}
+                // value={item.commentMessage}
+                // onChange={(e) => handelChange(e, i)}
               />
               <input
                 type="button"
                 value="Add"
                 className="mr10"
-                onClick={handelAddInput}
+                // onClick={handelAddInput}
               />
               <input
                 type="button"
                 value="Reomve"
-                onClick={(e) => handelRemoveInput(i)}
+                // onClick={(e) => handelRemoveInput(i)}
               />
             </form>
+          </div>
+
+      {comments.map((item, i) => {
+        return (
+          <div key={i}>
+            <p>Name: {item.name_first} {item.name_last} </p>
+            <p>Date: {item.createdAt} </p>
+            <p>{item.text}</p>
           </div>
         );
       })}
