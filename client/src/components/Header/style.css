@@ -4,3 +4,10 @@
     font-size: 1.25rem;
     letter-spacing: 1px;
 }
+
+.subtitle {
+    font-family: "Special Elite", cursive;
+    text-shadow: 0 0 8px rgb(42, 112, 103);
+    font-size: 2.5rem;
+    letter-spacing: 6px;
+}
