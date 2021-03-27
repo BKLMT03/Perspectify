@@ -6,18 +6,10 @@ h2 {
     text-shadow: 0 0 3px darkslategrey;
 }
 
-
-div.carosel {
-    text-align: right;
-    background-color: blue;
-    font-size: x-large;
-    position: absolute;
-    top: 350px;
-    right: 0;
-    
+.carousel {
+    width: 540px;
+    height: 300px;
+    margin-bottom: 50px
 }
 
-/* .box{
-    height: 100px;
-    width: 100px;
-} */
+
