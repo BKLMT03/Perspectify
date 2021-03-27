@@ -18,7 +18,7 @@ function Navbar () {
       <li className='nav-item mb-2'>
         <Link
           className='nav-link'
-          to='contact'
+          to='/profile'
           style={{ color: 'black', textShadow: '0 0 3px black' }}
         >
           My Profile

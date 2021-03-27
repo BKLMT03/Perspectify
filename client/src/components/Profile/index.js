@@ -8,7 +8,7 @@ import Container from "../Container"
 import DonutChart from "../DonutChart"
 import "./style.css"
 
-function SavedArticles() {
+function Profile() {
     return (
         <div>
             <Row>
@@ -44,4 +44,4 @@ function SavedArticles() {
     )
 }
 
-export default SavedArticles
+export default Profile
