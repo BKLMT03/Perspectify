@@ -6,7 +6,7 @@ function ProfileName () {
   return (
     <div className='userName'>
       <Row>
-        <h1 className='name'>Jane Doe</h1> 
+        <span className='name'>Jane Doe</span>
       </Row>
     </div>
   )

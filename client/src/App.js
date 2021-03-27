@@ -24,8 +24,6 @@ function App () {
             <Col size='10'>
               <Route exact path='/' component={Home} />
               <Route exact path='/home' component={Home} />
-              <Route exact path='/savedarticles' component={ProfileName} />
-              <Route exact path='/savedarticles' component={ProfilePic} />
               <Route exact path='/savedarticles' component={SavedArticles} />
               {/* <Route exact path='/savedarticles' component={SavedArticles} /> */}
             </Col>
