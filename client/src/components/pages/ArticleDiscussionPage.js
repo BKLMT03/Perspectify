@@ -95,13 +95,14 @@ const ArticleDiscussionPage = (props) => {
               <input
                 type="button"
                 value="Add"
-                className="mr10"
+                className="mr10 inputButton"
                 onClick={handelAddInput}
               />
               <input
                 type="button"
                 value="Reomve"
                 onClick={(e) => handelRemoveInput(i)}
+                className='inputButton'
               />
             </form>
           </div>

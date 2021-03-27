@@ -9,7 +9,7 @@ function Navbar () {
         <Link
           className='nav-link'
           to='/'
-          style={{ color: 'darkslategray', textShadow: '1px 1px black' }}
+          style={{ color: 'darkslategray', textShadow: '1px 1px black'}}
         >
           Home
         </Link>

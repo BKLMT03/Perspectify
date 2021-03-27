@@ -4,3 +4,8 @@ nav {
     font-size: 1.25rem;
     text-shadow: 0 0 3px darkslategrey;
 }
+
+
+.nav-link:hover{
+    opacity: 0.3;
+}

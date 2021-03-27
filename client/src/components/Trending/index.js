@@ -51,7 +51,7 @@ const Trending = (props) => {
   return (
     <div className="container-fluid border shadow">
       <h1 className="trending pt-3">Trending Topics</h1>
-      <button onClick={() => newsApi()}> Generate News </button>
+      <button className="generateButton" onClick={() => newsApi()}> Generate News </button>
       <Row>
         <div>
           {topicData.map((item) => {

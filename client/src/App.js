@@ -13,7 +13,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Login from "./components/pages/Login";
 import SignUp from "./components/pages/SignUp";
 import Home from "./pages/Home"
-import Trending from "./components/Trending"
+
 
 function App () {
   return (
