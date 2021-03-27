@@ -12,6 +12,9 @@ import Login from "./components/pages/Login";
 import SignUp from "./components/pages/SignUp";
 import Trending from "./components/Trending"
 
+import ProfileName from './components/ProfileName'
+import ProfilePic from './components/ProfilePic'
+import SavedArticles from './components/SavedArticles'
 
 function App () {
   return (
@@ -29,6 +32,7 @@ function App () {
               <Route exact path='/' component={Trending} />
               <Route exact path='/home' component={Trending} />
               <Route exact path='/Discussion' component={ArticleDiscussionPage} />
+              <Route exact path='/myprofile' component={SavedArticles} />
             </Col>
           </Row>
         </Container>
