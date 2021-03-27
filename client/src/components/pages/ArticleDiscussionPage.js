@@ -1,24 +1,31 @@
-import {useState, useEffect, React} from 'react'
+import { useState, useEffect, React } from 'react'
 import axios from 'axios'
 import newsApiKeys from '../../config/apikeys'
-import Carousel from "../Carousel/Carosel";
-import "./ArticleDiscussionPage.css";
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Carousel from '../Carousel/Carosel'
+import './ArticleDiscussionPage.css'
 
-const ArticleDiscussionPage = (props) => {
-  const [comment, setComment] = useState([{ commentMessage: "test111" }]);
-  const [comments, setComments] = useState([]);
-  const [articleData, setArticleData] = useState([]);
+const ArticleDiscussionPage = props => {
+  const [comment, setComment] = useState([{ commentMessage: 'test111' }])
+  const [comments, setComments] = useState([])
+  const [articleData, setArticleData] = useState([])
   const [activeArticle, setActiveArticle] = useState('')
   const top5 = []
 
   const queryNewsApi = async () => {
-    const key = newsApiKeys[Math.floor(Math.random() * Math.floor(newsApiKeys.length))]
+    const key =
+      newsApiKeys[Math.floor(Math.random() * Math.floor(newsApiKeys.length))]
     console.log(key)
-    console.log("generating news....")
-
+    console.log('generating news....')
 
     // const queryNewsData = await axios.get("https://newsapi.org/v2/everything?q=" + searchQuery + "&language=en&sortBy=popularity&apiKey=" + key)
-    const queryNewsData = await axios.get("https://newsapi.org/v2/everything?qInTitle=" + props.location.state.query + "&language=en&sortBy=popularity&apiKey=" + key)
+    const queryNewsData = await axios.get(
+      'https://newsapi.org/v2/everything?qInTitle=' +
+        props.location.state.query +
+        '&language=en&sortBy=popularity&apiKey=' +
+        key
+    )
     console.log(queryNewsData)
     for (let i = 0; i < 5; i++) {
       top5.push(queryNewsData.data.articles[i])
@@ -31,102 +38,105 @@ const ArticleDiscussionPage = (props) => {
   const getComments = async () => {
     const config = {
       headers: {
-          'Content-type': 'application/json'
+        'Content-type': 'application/json'
       }
     }
     try {
-    console.log(props.location.state.query)
-    const res = await axios.get('/api/v1/comments', {params: {topic: props.location.state.query}} );
-    // const res = await axios.get('/api/v1/comments');
-    setComments(res.data.data);
-    
-    } catch (error) {
-    
-    
-    }
+      console.log(props.location.state.query)
+      const res = await axios.get('/api/v1/comments', {
+        params: { topic: props.location.state.query }
+      })
+      // const res = await axios.get('/api/v1/comments');
+      setComments(res.data.data)
+    } catch (error) {}
     console.log(comments)
   }
 
   const addComments = async () => {
     try {
-    const res = await axios.post('/api/v1/comments');
-    
-    } catch (error) {
-      
-    }
+      const res = await axios.post('/api/v1/comments')
+    } catch (error) {}
   }
 
   useEffect(async () => {
-    await queryNewsApi();
-    await getComments();
-  }, []) 
+    await queryNewsApi()
+    await getComments()
+  }, [])
 
   const handelChange = (e, index) => {
-    const { name, value } = e.target;
+    const { name, value } = e.target
 
-    const list = [...comment];
-    list[index][name] = value;
+    const list = [...comment]
+    list[index][name] = value
 
-    setComment(list);
-  };
+    setComment(list)
+  }
   const handelAddInput = () => {
-    setComment([...comment, { commentMessage: "" }]);
-    getComments();
-  };
+    setComment([...comment, { commentMessage: '' }])
+    getComments()
+  }
 
-  const handelRemoveInput = (index) => {
-    const list = [...comment];
-    list.splice(index, 1);
-    setComment(list);
-  };
+  const handelRemoveInput = index => {
+    const list = [...comment]
+    list.splice(index, 1)
+    setComment(list)
+  }
 
   return (
-    <div>
-      <div className="articleSection">
-        <h2>Article Title</h2>
-        <div className="articleBlock">Article Content</div>
-      </div>
+    <Container className="mt-5">
       <div>
-        <h2>Leave Your Comment</h2>
-      </div>
-      <div className="textBox">
-        {/* add key={i} next to class name above */}
-            <form>
-              <textarea
-                name="commentMessage"
-                placeholder="comment"
-                className="mr10"
-                row="3"
-                id="commentText"
-                // value={item.commentMessage}
-                // onChange={(e) => handelChange(e, i)}
-              />
-              <input
-                type="button"
-                value="Add"
-                className="mr10"
-                // onClick={handelAddInput}
-              />
-              <input
-                type="button"
-                value="Reomve"
-                // onClick={(e) => handelRemoveInput(i)}
-              />
-            </form>
+        <Row className='justify-content-center'>
+          <div className='articleSection'>
+            <h2>Article Title</h2>
+            <div className='articleBlock'>Article Content</div>
           </div>
+        </Row>
+        <Row className="mt-5">
+          <div>
+            <h4>Have Your Say</h4>
+          </div>
+        </Row>
+        <div className='textBox'>
+          {/* add key={i} next to class name above */}
+          <form>
+            <textarea
+              name='commentMessage'
+              placeholder='comment'
+              className='mr10'
+              row='3'
+              id='commentText'
+              // value={item.commentMessage}
+              // onChange={(e) => handelChange(e, i)}
+            />
+            <input
+              type='button'
+              value='Add'
+              className='mr10'
+              // onClick={handelAddInput}
+            />
+            <input
+              type='button'
+              value='Remove'
+              // onClick={(e) => handelRemoveInput(i)}
+            />
+          </form>
+        </div>
 
-      {comments.map((item, i) => {
-        return (
-          <div key={i}>
-            <p>Name: {item.name_first} {item.name_last} </p>
-            <p>Date: {item.createdAt} </p>
-            <p>{item.text}</p>
-          </div>
-        );
-      })}
-      <Carousel data={articleData}/>
-    </div>
-  );
+        {comments.map((item, i) => {
+          return (
+            <div key={i}>
+              <p>
+                Name: {item.name_first} {item.name_last}{' '}
+              </p>
+              <p>Date: {item.createdAt} </p>
+              <p>{item.text}</p>
+            </div>
+          )
+        })}
+        <Carousel data={articleData} />
+      </div>
+    </Container>
+  )
 }
 
-export default ArticleDiscussionPage;
+export default ArticleDiscussionPage
