@@ -42,13 +42,20 @@ const ArticleDiscussionPage = props => {
       }
     }
     try {
-      console.log(props.location.state.query)
-      const res = await axios.get('/api/v1/comments', {
-        params: { topic: props.location.state.query }
-      })
-      // const res = await axios.get('/api/v1/comments');
-      setComments(res.data.data)
-    } catch (error) {}
+    console.log(props.location.state.query)
+    const res = await axios.get('/api/v1/comments', {params: {topic: props.location.state.query}} );
+    // const res = await axios.get('/api/v1/comments');
+    if (res.data.message === "No comments regarding this topic to show!") {
+      setComments([res.data.message])
+    } else {
+      setComments(res.data.data);
+    }
+    
+    
+    } catch (error) {
+    
+    
+    }
     console.log(comments)
   }
 

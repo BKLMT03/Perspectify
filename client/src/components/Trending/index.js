@@ -47,12 +47,7 @@ const Trending = props => {
     console.log('generating news....')
 
     // const queryNewsData = await axios.get("https://newsapi.org/v2/everything?q=" + searchQuery + "&language=en&sortBy=popularity&apiKey=" + key)
-    const queryNewsData = await axios.get(
-      'https://newsapi.org/v2/everything?qInTitle=' +
-        searchQuery +
-        '&language=en&sortBy=popularity&apiKey=' +
-        key
-    )
+    const queryNewsData = await axios.get('https://newsapi.org/v2/everything?qInTitle=' + searchQuery + '&language=en&sortBy=popularity&apiKey=' + key)
     console.log(queryNewsData)
     for (let i = 0; i < 5; i++) {
       top5.push(queryNewsData.data.articles[i])
