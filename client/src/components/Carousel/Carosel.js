@@ -12,11 +12,9 @@ const Carosel = ({ data }) => {
   // }, [])
 
   return (
-    <div>
-      <Container>
+      <Container className="mt-5">
         <Row className="justify-content-center">
           <h2>Related Articles</h2>
-
           <Carousel>
             {data.map((item) => {
               return (
@@ -36,7 +34,6 @@ const Carosel = ({ data }) => {
           </Carousel>
         </Row>
       </Container>
-    </div>
   );
 };
 
