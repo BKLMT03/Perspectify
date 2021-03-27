@@ -38,7 +38,12 @@ const ArticleDiscussionPage = (props) => {
     console.log(props.location.state.query)
     const res = await axios.get('/api/v1/comments', {params: {topic: props.location.state.query}} );
     // const res = await axios.get('/api/v1/comments');
-    setComments(res.data.data);
+    if (res.data.message === "No comments regarding this topic to show!") {
+      setComments([res.data.message])
+    } else {
+      setComments(res.data.data);
+    }
+    
     
     } catch (error) {
     
@@ -84,7 +89,8 @@ const ArticleDiscussionPage = (props) => {
     <div>
       <div className="articleSection">
         <h2>Article Title</h2>
-        <div className="articleBlock">Article Content</div>
+        <div className="articleBlock">
+        </div>
       </div>
       <div>
         <h2>Leave Your Comment</h2>
@@ -116,13 +122,22 @@ const ArticleDiscussionPage = (props) => {
           </div>
 
       {comments.map((item, i) => {
-        return (
-          <div key={i}>
-            <p>Name: {item.name_first} {item.name_last} </p>
-            <p>Date: {item.createdAt} </p>
-            <p>{item.text}</p>
-          </div>
-        );
+        if(item === "No comments regarding this topic to show!") {
+          return (
+                  <div>
+                    <p>{item}</p>
+                    <p> Start dicussion by leaving a comment above </p>
+                  </div>)
+        } else {
+          return (
+            <div key={i}>
+              <p>Name: {item.name_first} {item.name_last} </p>
+              <p>Date: {item.createdAt} </p>
+              <p>{item.text}</p>
+            </div>
+          );
+        }
+        
       })}
       <Carousel data={articleData}/>
     </div>
