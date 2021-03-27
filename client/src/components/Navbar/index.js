@@ -42,16 +42,6 @@ function Navbar () {
           SIGN UP
         </Link>
       </li>
-      <li className='nav-item mb-2'>
-        <Link
-          className='nav-link'
-          to='/Discussion'
-          style={{ color: 'black', textShadow: '0 0 3px black' }}
-        >
-          Discussion
-        </Link>
-      </li>
-      
 
     </nav>
   )
