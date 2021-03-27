@@ -85,6 +85,7 @@ const Trending = props => {
           </div>
         </Row>
 
+
         <Row >
           <div className='input-group pb-3 my-3 justify-content-center'>
             <form

@@ -10,6 +10,7 @@ function Navbar () {
           className='nav-link'
           to='/'
           style={{ color: 'black', textShadow: '0 0 3px black' }}
+
         >
           Home
         </Link>
