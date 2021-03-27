@@ -56,7 +56,7 @@ const ArticleDiscussionPage = props => {
     
     
     }
-    console.log(comments)
+    console.log(comments[0])
   }
 
   const addComments = async () => {
@@ -133,15 +133,24 @@ const ArticleDiscussionPage = props => {
         </div>
 
         {comments.map((item, i) => {
-          return (
-            <div key={i}>
-              <p>
-                Name: {item.name_first} {item.name_last}{' '}
-              </p>
-              <p>Date: {item.createdAt} </p>
-              <p>{item.text}</p>
-            </div>
-          )
+          if (comments[0] === "No comments regarding this topic to show!") {
+            return (
+              <div>
+                <p> {"No comments regarding this topic to show!"} </p>
+              </div>
+            )
+          } else {
+            return (
+              <div key={i}>
+                <p>
+                  Name: {item.name_first} {item.name_last}{' '}
+                </p>
+                <p>Date: {item.createdAt} </p>
+                <p>{item.text}</p>
+              </div>
+            )
+          }
+          
         })}
       </div>
     </Container>
