@@ -85,6 +85,7 @@ const ArticleDiscussionPage = props => {
   return (
     <Container className="mt-5">
       <div>
+
         <Row className='justify-content-center'>
           <div className='articleSection'>
             <h2>Article Title</h2>
