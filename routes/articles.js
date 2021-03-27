@@ -1,9 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const {getComments, addComment} = require('../controllers/comments')
+const {getArticles} = require('../controllers/articles')
 
 router.route('/')
-    .get(getComments)
-    .post(addComment)
+    .get(getArticles)
 
 module.exports = router;

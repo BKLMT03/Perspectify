@@ -4,9 +4,8 @@ exports.getComments = async (req, res, next) => {
     const body = req.body;
     const query = req.query;
     const param = req.params;
-    console.log(req)
     //this should equal search query passed in
-    console.log(query)
+    // console.log(query)
     try {
         const comments = await Comment.find(query)
         // const comments = await Comment.find()

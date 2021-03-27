@@ -3,8 +3,13 @@ import {Link} from 'react-router-dom'
 import Container from "react-bootstrap/Container"
 import Row from "react-bootstrap/Row"
 import "./style.css"
+import newsApiKeys from '../../config/apikeys'
+import axios from 'axios'
 
 const Article = ({query, title, description, url, image, date}) => {
+  if(!query) {
+    query = "cheese";
+  }
   return (
     
     <div className='card m-3 shadow-sm' style={{width: "18rem"}}>

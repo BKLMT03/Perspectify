@@ -10,8 +10,17 @@ const ArticleDiscussionPage = props => {
   const [comment, setComment] = useState([{ commentMessage: 'test111' }])
   const [comments, setComments] = useState([])
   const [articleData, setArticleData] = useState([])
-  const [activeArticle, setActiveArticle] = useState('')
-  const top5 = []
+  const [activeArticleUrl, setActiveArticleUrl] = useState('')
+  const [activeArticleTitle, setActiveArticleTitle] = useState();
+  const [activeArticleContent, setActiveArticleContent] = useState();
+  const top5 = [];
+
+  const getArticleData = async () => {
+    console.log(props.location.state.url)
+    const res = await axios.get('/api/v1/articles', {params: {query: props.location.state.url}} );
+    setActiveArticleTitle(res.data.data.title)
+    setActiveArticleContent(res.data.data.content)
+  }
 
   const queryNewsApi = async () => {
     const key =
@@ -32,7 +41,7 @@ const ArticleDiscussionPage = props => {
     }
     console.log(top5)
     setArticleData(top5)
-    setActiveArticle(props.location.state.url)
+    setActiveArticleUrl(props.location.state.url)
   }
 
   const getComments = async () => {
@@ -68,6 +77,7 @@ const ArticleDiscussionPage = props => {
   useEffect(async () => {
     await queryNewsApi()
     await getComments()
+    await getArticleData();
   }, [])
 
   const handelChange = (e, index) => {
@@ -88,6 +98,7 @@ const ArticleDiscussionPage = props => {
     list.splice(index, 1)
     setComment(list)
   }
+  new DOMParser().parseFromString(activeArticleContent, "text/xml")
 
   return (
     <Container className="mt-5">
@@ -95,8 +106,8 @@ const ArticleDiscussionPage = props => {
 
         <Row className='justify-content-center'>
           <div className='articleSection'>
-            <h2>Article Title</h2>
-            <div className='articleBlock'>Article Content</div>
+            <h2>{activeArticleTitle}</h2>
+            <div className='articleBlock'>{activeArticleContent}</div>
           </div>
         </Row>
         <Carousel data={articleData} />

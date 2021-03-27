@@ -12,6 +12,7 @@ connectDB();
 
 const comments = require('./routes/comments')
 const users = require('./routes/users')
+const articles = require('./routes/articles')
 
 const app = express();
 
@@ -23,6 +24,7 @@ if (process.env.NODE_ENV === 'development') {
 //whenever we reach localhost/api/v1/comments or users, it should route to comments.js or user.js
 app.use('/api/v1/comments', comments)
 app.use('/api/v1/users', users)
+app.use('/api/v1/articles', articles)
 
 //production deployment after running npm run build and having build folder
 if (process.env.NODE_ENV === 'production') {
