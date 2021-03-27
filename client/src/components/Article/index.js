@@ -14,7 +14,7 @@ const Article = ({query, title, description, url, image, date}) => {
         <p className='card-text'>
           {date}
         </p>
-        <button className='btn btn-light' type="onClick" href="/Discussion">
+        <button className='btn' type="onClick" href="/Discussion">
         <Link
           className='nav-link'
           // to='/Discussion'
@@ -25,7 +25,7 @@ const Article = ({query, title, description, url, image, date}) => {
           }}
           
         >
-          Discussion
+          Perspectify
         </Link>
         </button>
       </div>

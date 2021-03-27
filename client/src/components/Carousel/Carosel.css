@@ -16,12 +16,12 @@ h2 {
 }
 
 div.carousel-caption,
-p,
+p.car,
 .carousel-indicators {
     background-color: transparent;
 }
 
-p {
+p.car {
     font-size: 1.25rem;
     text-shadow: 0 0 5px black;
 }

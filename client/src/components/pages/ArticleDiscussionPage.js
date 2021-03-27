@@ -99,9 +99,11 @@ const ArticleDiscussionPage = props => {
             <div className='articleBlock'>Article Content</div>
           </div>
         </Row>
-        <Row className="mt-5">
+        <Carousel data={articleData} />
+
+        <Row>
           <div>
-            <h4>Have Your Say</h4>
+            <h2>Discuss</h2>
           </div>
         </Row>
         <div className='textBox'>
@@ -150,7 +152,6 @@ const ArticleDiscussionPage = props => {
           }
           
         })}
-        <Carousel data={articleData} />
       </div>
     </Container>
   )
