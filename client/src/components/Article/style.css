@@ -1,3 +1,14 @@
 .card {
     font-family: "Special Elite", cursive;
 }
+
+.card-title, .card-text {
+    text-align: left;
+    font-family: "Fira Sans", sans-serif;
+}
+
+.nav-link {
+    color: black;
+    font-size: 1.5rem;
+    text-shadow: 0 0 3px gold
+}

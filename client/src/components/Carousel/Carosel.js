@@ -26,7 +26,7 @@ const Carosel = ({ data }) => {
                     style={{ height: "300px" }}
                   />
                   <Carousel.Caption>
-                    <p>{item.title}</p>
+                    <p className="car">{item.title}</p>
                   </Carousel.Caption>
                 </Carousel.Item>
               );

@@ -82,7 +82,7 @@ const Trending = props => {
                     description={item.description}
                     url={item.url}
                     image={item.urlToImage}
-                    date={item.publishedAt}
+                    date={item.publishedAt.substr(0,10)}
                   />
                 </div>
               )
