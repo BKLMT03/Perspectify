@@ -11,6 +11,7 @@ import './style.css'
 const Trending = props => {
   const [topicData, setTopicData] = useState([])
   const [searchQuery, setSearchQuery] = useState('')
+  const [headerState, setHeaderState] = useState('Trending Topics')
   const topics = [
     'business',
     'entertainment',
@@ -38,11 +39,18 @@ const Trending = props => {
       'https://newsapi.org/v2/top-headlines?country=us&apiKey=' + key
     )
     console.log(newsData)
-    for (let i = 0; i < 5; i++) {
-      top5.push(newsData.data.articles[i])
+    for (let i = 0; i < 20; i++) {
+      if (newsData.data.articles[i] ) {
+        top5.push(newsData.data.articles[i])
+      }
     }
     console.log(top5)
-    setTopicData(top5)
+    var filtered = top5.filter(function(x) {
+      return x !== undefined;
+   });
+   console.log(filtered)
+    setTopicData(filtered)
+    setHeaderState('Trending Topics')
   }
 
   const queryNewsApi = async () => {
@@ -58,40 +66,23 @@ const Trending = props => {
       top5.push(queryNewsData.data.articles[i])
     }
     console.log(top5)
-    setTopicData(top5)
+
+    var filtered = top5.filter(function(x) {
+      return x !== undefined;
+    });
+    console.log(filtered)
+    setTopicData(filtered)
+    setHeaderState('Search results...')
   }
 
-  // useEffect(async () => {
-
-  // }, [])
+  useEffect(async () => {
+  await newsApi();  
+  }, [])
 
   return (
     <Container>
       <Header />
-      <div className='container-fluid border shadow'>
-        <h1 className='trending pt-3'>Trending Topics</h1>
-        <button onClick={() => newsApi()}> Generate News </button>
-        <Row>
-          <div>
-            {topicData.map(item => {
-              return (
-                <div className='topics'>
-                  <Article
-                    query={searchQuery}
-                    title={item.title}
-                    description={item.description}
-                    url={item.url}
-                    image={item.urlToImage}
-                    date={item.publishedAt.substr(0,10)}
-                  />
-                </div>
-              )
-            })}
-          </div>
-        </Row>
-
-
-        <Row >
+      <Row >
           <div className='input-group pb-3 my-3 justify-content-center'>
             <form
               onSubmit={e => {
@@ -116,6 +107,30 @@ const Trending = props => {
                 Search
               </button>
             </form>
+          </div>
+        </Row>
+      <div className='container-fluid border shadow'>
+        <h1 className='trending pt-3'>{headerState}</h1>
+        
+        {/* <button onClick={() => newsApi()}> Generate News </button> */}
+        <Row>
+          <div>
+            {topicData.map(item => {
+                 if (item) {
+                  return (
+                    <div className='topics'>
+                      <Article
+                        query={searchQuery}
+                        title={item.title}
+                        description={item.description}
+                        url={item.url}
+                        image={item.urlToImage}
+                        date={item.publishedAt.substr(0,10)}
+                      />
+                    </div>
+                  )
+                } 
+            })}
           </div>
         </Row>
       </div>
