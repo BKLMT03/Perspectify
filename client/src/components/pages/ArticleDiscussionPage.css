@@ -28,6 +28,10 @@ div.textBox {
     margin-right: 10px;
 }
 
+.inputButton:hover {
+    opacity: 0.5;
+}
+
 #commentText {
     width: 700px;
     height: 100px;
