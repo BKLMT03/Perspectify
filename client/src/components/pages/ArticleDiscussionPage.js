@@ -93,7 +93,7 @@ const ArticleDiscussionPage = props => {
         </Row>
         <Row className="mt-5">
           <div>
-            <h4>Have Your Say</h4>
+            <h4>Discuss...</h4>
           </div>
         </Row>
         <div className='textBox'>
