@@ -117,8 +117,10 @@ const ArticleDiscussionPage = props => {
         <Row className='justify-content-center'>
           <div className='articleSection'>
             <h2>{activeArticleTitle}</h2>
-            <div className='articleBlock'></div>
-            {/* add {activeArticleContent inside above div to show scraped article} */}
+            <div className='articleBlock'>
+            <div dangerouslySetInnerHTML={{__html: activeArticleContent}} />
+            </div>
+            {/* add {activeArticleContent} inside above div to show scraped article} */}
           </div>
         </Row>
         <Carousel data={articleData} />
