@@ -1,9 +1,9 @@
-import React, { Component } from "react";
+import React from 'react'
 import './Login.css'
 
-export default class Login extends Component {
-    render() {
-        return (
+const Login = () => {
+    return (
+        <div>
             <div className="auth-wrapper">
                 <div className="auth-inner">
             <form>
@@ -33,6 +33,8 @@ export default class Login extends Component {
             </form>
             </div>
             </div>
-        );
-    }
+        </div>
+    )
 }
+
+export default Login

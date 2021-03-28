@@ -108,24 +108,6 @@ const ArticleDiscussionPage = props => {
     setCurrentComment('');
   }
 
-  // const handelChange = (e, index) => {
-  //   const { name, value } = e.target
-
-  //   const list = [...currentComment]
-  //   list[index][name] = value
-
-  //   setCurrentComment(list)
-  // }
-  // const handelAddInput = () => {
-  //   setCurrentComment([...currentComment, { commentMessage: '' }])
-  //   getComments()
-  // }
-
-  // const handelRemoveInput = index => {
-  //   const list = [...comment]
-  //   list.splice(index, 1)
-  //   setCurrentComment(list)
-  // }
   // new DOMParser().parseFromString(activeArticleContent, "text/xml")
 
   return (

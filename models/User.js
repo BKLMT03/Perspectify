@@ -24,7 +24,6 @@ const UserSchema = new mongoose.Schema({
     image: {
         type: String,
         trim: true,
-        required: true
     },
     articles_read: {
         type: Number
