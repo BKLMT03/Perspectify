@@ -5,9 +5,10 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Carousel from '../Carousel/Carosel'
 import './ArticleDiscussionPage.css'
+import { set } from 'mongoose'
 
 const ArticleDiscussionPage = props => {
-  const [comment, setComment] = useState([{ commentMessage: 'test111' }])
+  const [currentComment, setCurrentComment] = useState('')
   const [comments, setComments] = useState([])
   const [articleData, setArticleData] = useState([])
   const [activeArticleUrl, setActiveArticleUrl] = useState('')
@@ -69,36 +70,63 @@ const ArticleDiscussionPage = props => {
   }
 
   const addComments = async () => {
+    const config = {
+      headers: {
+        'Content-type': 'application/json'
+      }
+    }
     try {
-      const res = await axios.post('/api/v1/comments')
-    } catch (error) {}
+      const res = await axios.post('/api/v1/comments', {
+        topic: props.location.state.query.toLowerCase(),
+        name_first: "Chris",
+        name_last: "Brown",
+        text: currentComment
+      }, config)
+      console.log(res)
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   useEffect(async () => {
     await queryNewsApi()
+    await handleRemoveInput();
     await getComments()
     await getArticleData();
   }, [])
 
-  const handelChange = (e, index) => {
-    const { name, value } = e.target
-
-    const list = [...comment]
-    list[index][name] = value
-
-    setComment(list)
-  }
-  const handelAddInput = () => {
-    setComment([...comment, { commentMessage: '' }])
-    getComments()
+  const handleChange = (e, index) => {
+    setCurrentComment(e.target.value)
   }
 
-  const handelRemoveInput = index => {
-    const list = [...comment]
-    list.splice(index, 1)
-    setComment(list)
+  const handleAddInput = () => {
+    addComments();
+    getComments();
   }
-  new DOMParser().parseFromString(activeArticleContent, "text/xml")
+
+  const handleRemoveInput = () => {
+    setCurrentComment('');
+  }
+
+  // const handelChange = (e, index) => {
+  //   const { name, value } = e.target
+
+  //   const list = [...currentComment]
+  //   list[index][name] = value
+
+  //   setCurrentComment(list)
+  // }
+  // const handelAddInput = () => {
+  //   setCurrentComment([...currentComment, { commentMessage: '' }])
+  //   getComments()
+  // }
+
+  // const handelRemoveInput = index => {
+  //   const list = [...comment]
+  //   list.splice(index, 1)
+  //   setCurrentComment(list)
+  // }
+  // new DOMParser().parseFromString(activeArticleContent, "text/xml")
 
   return (
     <Container className="mt-5">
@@ -107,7 +135,8 @@ const ArticleDiscussionPage = props => {
         <Row className='justify-content-center'>
           <div className='articleSection'>
             <h2>{activeArticleTitle}</h2>
-            <div className='articleBlock'>{activeArticleContent}</div>
+            <div className='articleBlock'></div>
+            {/* add {activeArticleContent inside above div to show scraped article} */}
           </div>
         </Row>
         <Carousel data={articleData} />
@@ -127,18 +156,13 @@ const ArticleDiscussionPage = props => {
               row='3'
               id='commentText'
               // value={item.commentMessage}
-              // onChange={(e) => handelChange(e, i)}
+              onChange={(e) => handleChange(e)}
             />
             <input
               type='button'
               value='Add'
               className='mr10'
-              // onClick={handelAddInput}
-            />
-            <input
-              type='button'
-              value='Remove'
-              // onClick={(e) => handelRemoveInput(i)}
+              onClick={handleAddInput}
             />
           </form>
         </div>
