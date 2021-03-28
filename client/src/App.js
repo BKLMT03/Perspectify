@@ -11,7 +11,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Login from "./components/pages/Login";
 import SignUp from "./components/pages/SignUp";
 import Trending from "./components/Trending"
-
+import Landing from './components/Landing'
 import ProfileName from './components/ProfileName'
 import ProfilePic from './components/ProfilePic'
 import Profile from './components/Profile'
@@ -30,7 +30,6 @@ function App () {
               <Route path="/login" component={Login} />
               <Route path="/sign-up" component={SignUp} />
               <Route exact path='/' component={Trending} />
-              <Route exact path='/home' component={Trending} />
               <Route exact path='/Discussion' component={ArticleDiscussionPage} />
               <Route exact path='/profile' component={Profile} />
             </Col>

@@ -72,3 +72,15 @@ body, html, .App, #root, .auth-wrapper {
 .forgot-password a {
   color: #167bff;
 }
+
+.normal {
+  color: black;
+}
+
+.error {
+  color: red;
+}
+
+.signUp {
+  background-color: rgb(156, 209, 104);
+}
