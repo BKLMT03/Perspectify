@@ -27,6 +27,7 @@ const SignUp = () => {
             }, config)
             if(res.data.message === "Email is already registered") {
                 setEmailErr("already exists");
+                setSignUpSuccess("")
             } else {
                 setEmailErr("");
                 clearInputs();
