@@ -11,7 +11,8 @@ const ArticleDiscussionPage = props => {
   const [currentComment, setCurrentComment] = useState('')
   const [comments, setComments] = useState([])
   const [articleData, setArticleData] = useState([])
-  const [activeArticleUrl, setActiveArticleUrl] = useState('')
+  const [activeArticleUrl, setActiveArticleUrl] = useState('');
+  const [activeQuery, setActiveQuery] = useState('');
   const [activeArticleTitle, setActiveArticleTitle] = useState();
   const [activeArticleContent, setActiveArticleContent] = useState();
   const top5 = [];
@@ -78,8 +79,8 @@ const ArticleDiscussionPage = props => {
     try {
       const res = await axios.post('/api/v1/comments', {
         topic: props.location.state.query.toLowerCase(),
-        name_first: "Chris",
-        name_last: "Brown",
+        name_first: "Kanye",
+        name_last: "West",
         text: currentComment
       }, config)
       console.log(res)
@@ -89,10 +90,12 @@ const ArticleDiscussionPage = props => {
   }
 
   useEffect(async () => {
-    await queryNewsApi()
+    await queryNewsApi();
     await handleRemoveInput();
-    await getComments()
+    await getComments();
     await getArticleData();
+    window.scrollTo(0, 0);
+    setActiveQuery(props.location.state.query)
   }, [])
 
   const handleChange = (e, index) => {
@@ -123,7 +126,8 @@ const ArticleDiscussionPage = props => {
             {/* add {activeArticleContent} inside above div to show scraped article} */}
           </div>
         </Row>
-        <Carousel data={articleData} />
+        <Carousel data={articleData}
+                  query={props.location.state.query} />
 
         <Row>
           <div>

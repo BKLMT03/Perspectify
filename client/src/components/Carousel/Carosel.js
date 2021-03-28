@@ -4,13 +4,11 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import "./Carosel.css";
 import Carousel from "react-bootstrap/Carousel";
+import {Link} from 'react-router-dom'
 
-const Carosel = ({ data }) => {
-  // const [articleData, setArticleData] = useState([])
-  // useEffect(() => {
-  //   setCarouselData(data)
-  // }, [])
-
+const Carosel = ({data, query}) => {
+  console.log(data)
+  console.log(query)
   return (
       <Container className="mt-5">
         <Row className="justify-content-center">
@@ -28,6 +26,16 @@ const Carosel = ({ data }) => {
                   <Carousel.Caption>
                     <p className="car">{item.title}</p>
                   </Carousel.Caption>
+                  <button className='btn' type="onClick" href="/Discussion">
+                  <Link className='nav-link'
+                    // to='/Discussion'
+                    to={{
+                      pathname: "/Discussion",
+                      state: {query: query,
+                              url: item.url}
+                    }}>
+                  View Article</Link>
+                  </button>
                 </Carousel.Item>
               );
             })}
