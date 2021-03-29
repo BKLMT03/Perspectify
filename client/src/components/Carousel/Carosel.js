@@ -6,13 +6,16 @@ import "./Carosel.css";
 import Carousel from "react-bootstrap/Carousel";
 import {Link} from 'react-router-dom'
 
-const Carosel = ({data, query}) => {
+const Carosel = ({data, query, relatedOrTrending}) => {
   console.log(data)
   console.log(query)
+  const reloadPage = () => {
+    window.location.reload();
+  }
   return (
       <Container className="mt-5">
         <Row className="justify-content-center">
-          <h2>Related Articles</h2>
+          <h2>{relatedOrTrending > 0 ? "More trending articles" : "Related articles"}</h2>
           <Carousel>
             {data.map((item) => {
               return (
@@ -25,7 +28,8 @@ const Carosel = ({data, query}) => {
                   <Carousel.Caption>
                     <p className="car">{item.title}</p>
                   </Carousel.Caption>
-                  <button className='btn' type="onClick" href="/Discussion">
+                  <button className='btn' type="onClick" href="/Discussion"
+                  onClick={reloadPage}>
                   <Link className='nav-link'
                     // to='/Discussion'
                     to={{

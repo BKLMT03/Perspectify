@@ -6,10 +6,8 @@ import "./style.css"
 import newsApiKeys from '../../config/apikeys'
 import axios from 'axios'
 
-const Article = ({query, title, description, url, image, date}) => {
-  if(!query) {
-    query = "cheese";
-  }
+const Article = ({trending, query, title, description, url, image, date}) => {
+
   return (
     
     <div className='card m-3 shadow-sm' style={{width: "18rem"}}>
@@ -26,7 +24,8 @@ const Article = ({query, title, description, url, image, date}) => {
           to={{
             pathname: "/Discussion",
             state: {query: query,
-                    url: url}
+                    url: url,
+                    trending: trending}
           }}
           
         >

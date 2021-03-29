@@ -21,6 +21,10 @@ const CommentSchema = new mongoose.Schema({
         trim: true,
         required: [true, 'Please add some text']
     },
+    url: {
+        type: String, 
+        trim: true,
+    },
     createdAt: {
         type: Date,
         default: Date.now
