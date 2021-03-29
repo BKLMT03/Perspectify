@@ -93,16 +93,17 @@ const Trending = props => {
               <div className="container">
               <input
                 type='text'
-                className='form-control search'
-                placeholder='Search for a topic'
+                className='form-control'
+                style={{width: "300px"}}
+                placeholder='Perspectify on a topic'
                 aria-label='Search for a topic'
                 aria-describedby='button-addon2'
                 onChange={e => setSearchQuery(e.target.value)}
               />
               <button
-                className='btn btn-outline-secondary mt-3'
+                className='btn'
+                style={{fontSize: "1.25rem"}}
                 type='button'
-                id='button-addon2'
                 onClick={() => queryNewsApi()}
               >
                 Search
