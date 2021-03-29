@@ -9,6 +9,7 @@ import Row from "./components/Row";
 import Footer from "./components/Footer";
 import ArticleDiscussionPage from "./components/pages/ArticleDiscussionPage";
 import "bootstrap/dist/css/bootstrap.min.css";
+import About from "./components/pages/About"
 import Login from "./components/pages/Login";
 import SignUp from "./components/pages/SignUp";
 import Trending from "./components/Trending";
@@ -28,6 +29,7 @@ function App() {
               <Route path="/login" component={Login} />
               <Route path="/sign-up" component={SignUp} />
               <Route exact path="/" component={Trending} />
+              <Route exact path="/about" component={About} />
               <Route
                 exact
                 path="/Discussion"

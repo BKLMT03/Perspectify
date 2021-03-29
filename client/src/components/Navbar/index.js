@@ -16,6 +16,15 @@ function Navbar () {
       <li className='nav-item mb-2'>
         <Link
           className='nav-link'
+          to='/about'
+        >
+          About
+        </Link>
+      </li>
+
+      <li className='nav-item mb-2'>
+        <Link
+          className='nav-link'
           to='/profile'
         >
           My Profile
