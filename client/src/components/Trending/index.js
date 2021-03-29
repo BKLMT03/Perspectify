@@ -126,6 +126,7 @@ const Trending = props => {
                   return (
                     <div className='topics'>
                       <Article
+                        trending={topicData}
                         query={searchQuery}
                         title={item.title}
                         description={item.description}
