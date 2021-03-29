@@ -7,6 +7,7 @@ import ProfilePic from "../ProfilePic"
 import Container from "../Container"
 import DonutChart from "../DonutChart"
 import "./style.css"
+import RecentActivity from '../RecentActivity/index'
 
 function Profile() {
     return (
@@ -21,12 +22,7 @@ function Profile() {
                 <Row><h3>Recent Activity</h3></Row>
                 <Row><Col size="8"><DonutChart></DonutChart></Col>
                     <Col size="4"><Row><h5>Your Activities</h5></Row>
-                        <Row><div className="recent-activity-item">You read this article</div></Row>
-                        <Row><div className="recent-activity-item">You read this article</div></Row>
-                        <Row><div className="recent-activity-item">You read this article</div></Row>
-                        <Row><div className="recent-activity-item">You read this article</div></Row>
-                        <Row><div className="recent-activity-item">You read this article</div></Row>
-                        <Row><div className="recent-activity-item">You read this article</div></Row>
+                        <RecentActivity></RecentActivity>
                         
                     </Col>
                 </Row>

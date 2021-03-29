@@ -11,9 +11,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Login from "./components/pages/Login";
 import SignUp from "./components/pages/SignUp";
 import Trending from "./components/Trending"
-
-import ProfileName from './components/ProfileName'
-import ProfilePic from './components/ProfilePic'
 import Profile from './components/Profile'
 
 function App () {
