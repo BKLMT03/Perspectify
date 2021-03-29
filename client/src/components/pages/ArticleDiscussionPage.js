@@ -189,6 +189,7 @@ const ArticleDiscussionPage = (props) => {
             {/* add {activeArticleContent} inside above div to show scraped article} */}
           </div>
         </Row>
+        <div> <h2><a href={activeArticleUrl}> View original article here </a></h2></div>
         <Carousel data={articleData} query={props.location.state.query} relatedOrTrending={relatedOrTrending} />
         <Row className="mt-5">
           <div>

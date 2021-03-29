@@ -6,9 +6,11 @@ import Header from '../Header'
 import Row from "react-bootstrap/Row"
 import news from '../../testnewsdata'
 import newsApiKeys from '../../config/apikeys'
+import stockApiKeys from '../../config/apikeys2'
 import './style.css'
 
 const Trending = props => {
+  const [stockData, setStockData] = useState();
   const [topicData, setTopicData] = useState([])
   const [searchQuery, setSearchQuery] = useState('')
   const [headerState, setHeaderState] = useState('Trending Topics')
@@ -29,6 +31,12 @@ const Trending = props => {
   const superRight = ['The Blaze', 'OANN', 'News Max', 'Daily Caller', 'Breitbart News', 'Drudge Report'];
   // const arr = news;
   //line 12 is static news data imported from testnewsdata
+
+  const stockApi = async () => {
+    const stockSymbol = 'GME';
+    const stockQuery = await axios.get('https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=' + stockSymbol +'&interval=5min&apikey=' + stockApiKeys[0])
+    console.log(stockQuery.data["Time Series (5min)"])
+  }
 
   const newsApi = async () => {
     const key =
@@ -101,7 +109,7 @@ const Trending = props => {
                 onChange={e => setSearchQuery(e.target.value)}
               />
               <button
-                className='btn'
+                className='btn search-button'
                 style={{fontSize: "1.25rem"}}
                 type='button'
                 onClick={() => queryNewsApi()}

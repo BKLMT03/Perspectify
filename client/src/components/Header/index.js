@@ -11,15 +11,17 @@ function Header () {
       <Row>
         <h3 className='subtitle mt-4 mb-5'>
           <Typed
-            strings={['Earn Your Opinion.']}
+            strings={['Earn Your Opinion.', 'Escape the echo chamber.' , 'Challenge your beliefs.', 'PERSPECTIFY yourself.']}
             startDelay={100}
-            typeSpeed={100}
+            typeSpeed={80}
+            backSpeed={40}
+            loop
           />
         </h3>
       </Row>
       <Row>
         <p>
-          Escape the echo chamber. Challenge your beliefs. PERSPECTIFY yourself.
+           
         </p>
         <p>
           Find the latest news on trending topics from a variety of news sources

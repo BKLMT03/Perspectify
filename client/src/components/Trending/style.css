@@ -26,3 +26,8 @@
     font-family: 'Comfortaa', cursive;
 }
 
+.search-button {
+    border: 0.5px solid black;
+    margin-top: 10px;
+}
+

@@ -37,7 +37,8 @@ const Carosel = ({data, query, relatedOrTrending}) => {
                       state: {query: query,
                               url: item.url}
                     }}>
-                  View Article</Link>
+                    Click to load this article ^
+                  </Link>
                   </button>
                 </Carousel.Item>
               );
