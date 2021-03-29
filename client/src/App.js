@@ -16,7 +16,7 @@ import Profile from "./components/Profile";
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <Logo />
       <Router>
         <Container>
@@ -37,8 +37,8 @@ function App() {
             </Col>
           </Row>
         </Container>
+        <Footer />
       </Router>
-      <Footer />
     </div>
   );
 }
