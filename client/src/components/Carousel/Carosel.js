@@ -18,10 +18,9 @@ const Carosel = ({data, query}) => {
               return (
                 <Carousel.Item>
                   <img
-                    className="d-block"
+                    className="d-block img-car"
                     src={item.urlToImage}
                     alt="First slide"
-                    style={{ height: "300px" }}
                   />
                   <Carousel.Caption>
                     <p className="car">{item.title}</p>

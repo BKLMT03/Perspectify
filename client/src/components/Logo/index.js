@@ -1,10 +1,11 @@
 import React from 'react'
 import Row from '../Row'
+import Jumbotron from "react-bootstrap/Jumbotron"
 import './style.css'
 
 function Logo () {
   return (
-    <div className='mt-5 mb-2'>
+    <div className='container-fluid mt-5 mb-2'>
       <Row>
         <h1 className='logo'>
           Perspect<span className='i'>i</span>
