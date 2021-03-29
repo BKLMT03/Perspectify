@@ -90,6 +90,7 @@ const Trending = props => {
                 queryNewsApi()
               }}
             >
+              <div className="container">
               <input
                 type='text'
                 className='form-control'
@@ -107,6 +108,10 @@ const Trending = props => {
               >
                 Search
               </button>
+
+              </div>
+              
+              
             </form>
           </div>
         </Row>

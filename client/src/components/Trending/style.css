@@ -12,5 +12,10 @@
 
 .input-group {
     font-family: "Special Elite", cursive;
-
+    
 }
+.generateButton:hover {
+    opacity: 0.3;
+}
+
+
