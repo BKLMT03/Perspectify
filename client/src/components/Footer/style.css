@@ -1,0 +1,45 @@
+.app-footer {
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    padding: 5px
+}
+
+.app-footer a img {
+    background-color: black;
+}
+
+.app-footer h1 {
+    color: white;
+    background-color: black;
+}
+
+.B {
+    color: rgb(228, 228, 228)
+}
+
+.K {
+    color: rgb(2, 112, 2)
+}
+
+.L {
+    color: blue
+}
+
+.M {
+    color: rgb(179, 3, 3)
+}
+
+.T {
+    color: gold
+}
+
+.oh-three {
+    color: rgb(228, 228, 228)
+}
+
+#bklmt03 {
+    background-color: black;
+    text-shadow: 0 0 5px white;
+    font-size: 1.25rem;
+}
