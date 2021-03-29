@@ -66,8 +66,11 @@ const ArticleDiscussionPage = (props) => {
         top5.push(queryNewsData.data.articles[i]);
       }
     }
+    var filtered = top5.filter(function(x) {
+      return x !== undefined;
+    });
     
-    setArticleData(top5);
+    setArticleData(filtered);
     setActiveArticleUrl(props.location.state.url);
   };
 
