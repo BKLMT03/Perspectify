@@ -15,6 +15,7 @@ const ArticleDiscussionPage = (props) => {
   const [activeQuery, setActiveQuery] = useState("");
   const [activeArticleTitle, setActiveArticleTitle] = useState();
   const [activeArticleContent, setActiveArticleContent] = useState();
+  const [relatedOrTrending, setRelatedOrTrending] = useState(0)
   const top5 = [];
 
   const getArticleData = async () => {
@@ -28,22 +29,30 @@ const ArticleDiscussionPage = (props) => {
 
   const queryNewsApi = async () => {
     const key =
-      newsApiKeys[Math.floor(Math.random() * Math.floor(newsApiKeys.length))];
+    newsApiKeys[Math.floor(Math.random() * Math.floor(newsApiKeys.length))];
     console.log(key);
     console.log("generating news....");
-
-    // const queryNewsData = await axios.get("https://newsapi.org/v2/everything?q=" + searchQuery + "&language=en&sortBy=popularity&apiKey=" + key)
-    const queryNewsData = await axios.get(
-      "https://newsapi.org/v2/everything?qInTitle=" +
-        props.location.state.query +
-        "&language=en&sortBy=popularity&apiKey=" +
-        key
-    );
-    console.log(queryNewsData);
-    for (let i = 0; i < 5; i++) {
-      top5.push(queryNewsData.data.articles[i]);
+    if (!props.location.state.query) {
+      setRelatedOrTrending(1);
+      const queryNewsData = await axios.get(
+        'https://newsapi.org/v2/top-headlines?country=us&apiKey=' + key
+      )
+      for (let i = 0; i < 5; i++) {
+        top5.push(queryNewsData.data.articles[i]);
+      }
+    } else {
+      setRelatedOrTrending(0);
+      const queryNewsData = await axios.get(
+        "https://newsapi.org/v2/everything?qInTitle=" +
+          props.location.state.query +
+          "&language=en&sortBy=popularity&apiKey=" +
+          key
+      );
+      for (let i = 0; i < 5; i++) {
+        top5.push(queryNewsData.data.articles[i]);
+      }
     }
-    console.log(top5);
+    
     setArticleData(top5);
     setActiveArticleUrl(props.location.state.url);
   };
@@ -55,40 +64,76 @@ const ArticleDiscussionPage = (props) => {
       },
     };
     try {
-      console.log(props.location.state.query);
-      const res = await axios.get("/api/v1/comments", {
-        params: { topic: props.location.state.query },
-      });
-      // const res = await axios.get('/api/v1/comments');
-      if (res.data.message === "No comments regarding this topic to show!") {
-        setComments([res.data.message]);
+      if (!props.location.state.query) {
+        const res = await axios.get("/api/v1/comments", {
+          params: { topic: props.location.state.url.toLowerCase()},
+        });
+        if (res.data.message === "No comments regarding this topic to show!") {
+          setComments([res.data.message]);
+        } else {
+          setComments(res.data.data);
+        }
       } else {
-        setComments(res.data.data);
+        const res = await axios.get("/api/v1/comments", {
+          params: { topic: props.location.state.query.toLowerCase()},
+        });
+        if (res.data.message === "No comments regarding this topic to show!") {
+          setComments([res.data.message]);
+        } else {
+          setComments(res.data.data);
+        }
       }
+      // const res = await axios.get('/api/v1/comments');
+      
     } catch (error) {}
     console.log(comments[0]);
   };
 
   const addComments = async () => {
-    const config = {
-      headers: {
-        "Content-type": "application/json",
-      },
-    };
-    try {
-      const res = await axios.post(
-        "/api/v1/comments",
-        {
-          topic: props.location.state.query.toLowerCase(),
-          name_first: "Kanye",
-          name_last: "West",
-          text: currentComment,
+    if (!props.location.state.query) {
+      const topic = props.location.state.url
+      const config = {
+        headers: {
+          "Content-type": "application/json",
         },
-        config
-      );
-      console.log(res);
-    } catch (error) {
-      console.log(error);
+      };
+      try {
+        const res = await axios.post(
+          "/api/v1/comments",
+          {
+            topic: topic.toLowerCase(),
+            name_first: "Kanye",
+            name_last: "West",
+            text: currentComment,
+          },
+          config
+        );
+        console.log(res);
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      const topic = props.location.state.query
+      const config = {
+        headers: {
+          "Content-type": "application/json",
+        },
+      };
+      try {
+        const res = await axios.post(
+          "/api/v1/comments",
+          {
+            topic: topic.toLowerCase(),
+            name_first: "Kanye",
+            name_last: "West",
+            text: currentComment,
+          },
+          config
+        );
+        console.log(res);
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
 
@@ -128,7 +173,7 @@ const ArticleDiscussionPage = (props) => {
             {/* add {activeArticleContent} inside above div to show scraped article} */}
           </div>
         </Row>
-        <Carousel data={articleData} query={props.location.state.query} />
+        <Carousel data={articleData} query={props.location.state.query} relatedOrTrending={relatedOrTrending} />
         <Row className="mt-5">
           <div>
             <h2>Discuss</h2>
