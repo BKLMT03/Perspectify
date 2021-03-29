@@ -9,8 +9,6 @@ function Navbar () {
         <Link
           className='nav-link'
           to='/'
-          style={{ color: 'black', textShadow: '0 0 3px black' }}
-
         >
           Home
         </Link>
@@ -19,7 +17,6 @@ function Navbar () {
         <Link
           className='nav-link'
           to='/profile'
-          style={{ color: 'black', textShadow: '0 0 3px black' }}
         >
           My Profile
         </Link>
@@ -28,7 +25,6 @@ function Navbar () {
         <Link
           className='nav-link'
           to='/login'
-          style={{ color: 'black', textShadow: '0 0 3px black' }}
         >
           LOG IN
         </Link>
@@ -37,7 +33,6 @@ function Navbar () {
         <Link
           className='nav-link'
           to='/sign-up'
-          style={{ color: 'black', textShadow: '0 0 3px black' }}
         >
           SIGN UP
         </Link>

@@ -39,3 +39,7 @@ div.carousel-item {
     height: 300px;
     object-fit: contain;
 }
+
+.viewButton {
+    text-shadow: 0 0 3px gold;
+}
