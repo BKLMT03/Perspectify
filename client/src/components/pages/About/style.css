@@ -1,0 +1,12 @@
+.about {
+    font-family: "Special Elite", cursive;
+}
+
+section {
+    font-size: 1.25rem
+}
+
+section.disclaimer {
+    font-size: 1rem;
+    opacity: 0.6
+}
