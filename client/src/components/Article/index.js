@@ -9,15 +9,7 @@ import axios from 'axios'
 const Article = ({trending, query, title, description, url, image, date}) => {
 
   return (
-    
-    <div className='card m-3 shadow-sm' style={{width: "18rem"}}>
-      <img src={image} className='card-img-top' alt="Article Image" />
-      <div className='card-body'>
-        <h5 className='card-title'>{title}</h5>
-        <p className='card-text'>
-          {date}
-        </p>
-        <button className='btn' type="onClick" href="/Discussion">
+    <button className='btn' type="onClick" href="/Discussion">
         <Link
           className='nav-link'
           // to='/Discussion'
@@ -26,14 +18,21 @@ const Article = ({trending, query, title, description, url, image, date}) => {
             state: {query: query,
                     url: url,
                     trending: trending}
-          }}
-          
-        >
-          Perspectify
+          }}>
+            
+        <div className='card m-3 shadow-sm' style={{width: "18rem"}}>
+        <img src={image} className='card-img-top' alt="Article Image" />
+        <div className='card-body'>
+        <h5 className='card-title'>{title}</h5>
+          <p className='card-text'>
+            {date}
+          </p>
+        
+        </div>
+        </div>
         </Link>
         </button>
-      </div>
-    </div>
+    
   )
 }
 

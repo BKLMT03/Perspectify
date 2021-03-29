@@ -15,16 +15,30 @@ const ArticleDiscussionPage = (props) => {
   const [activeQuery, setActiveQuery] = useState("");
   const [activeArticleTitle, setActiveArticleTitle] = useState();
   const [activeArticleContent, setActiveArticleContent] = useState();
-  const [relatedOrTrending, setRelatedOrTrending] = useState(0)
+  const [relatedOrTrending, setRelatedOrTrending] = useState(0);
+  const [articleStatus, setArticleStatus] = useState(0);
   const top5 = [];
+
+  const updateUserStats = async () => {
+    
+  }
 
   const getArticleData = async () => {
     console.log(props.location.state.url);
-    const res = await axios.get("/api/v1/articles", {
-      params: { query: props.location.state.url },
-    });
-    setActiveArticleTitle(res.data.data.title);
-    setActiveArticleContent(res.data.data.content);
+    try {
+      const res = await axios.get("/api/v1/articles", {
+        params: { query: props.location.state.url },
+      });
+      setActiveArticleTitle(res.data.data.title);
+      setActiveArticleContent(res.data.data.content);
+      
+    } catch (error) {
+      if (error) {
+        setActiveArticleTitle("Oops...something went wrong trying to retrieve the article...please try refreshing the page or try again later!")
+      }
+    }
+    
+    
   };
 
   const queryNewsApi = async () => {
@@ -142,6 +156,7 @@ const ArticleDiscussionPage = (props) => {
     await handleRemoveInput();
     await getComments();
     await getArticleData();
+    await updateUserStats();
     window.scrollTo(0, 0);
     setActiveQuery(props.location.state.query);
   }, []);
@@ -153,6 +168,7 @@ const ArticleDiscussionPage = (props) => {
   const handleAddInput = () => {
     addComments();
     getComments();
+    handleRemoveInput();
   };
 
   const handleRemoveInput = () => {
@@ -184,11 +200,11 @@ const ArticleDiscussionPage = (props) => {
           <form>
             <textarea
               name="commentMessage"
-              placeholder="comment"
+              placeholder="Enter your comment here..."
               className="mr10"
               row="3"
               id="commentText"
-              // value={item.commentMessage}
+              value={currentComment}
               onChange={(e) => handleChange(e)}
             />
             <button type="button" className="btn" onClick={handleAddInput}>
@@ -197,7 +213,7 @@ const ArticleDiscussionPage = (props) => {
           </form>
         </div>
 
-        {comments.map((item, i) => {
+        {[...comments].reverse().map((item, i) => {
           if (comments[0] === "No comments regarding this topic to show!") {
             return (
               <div>

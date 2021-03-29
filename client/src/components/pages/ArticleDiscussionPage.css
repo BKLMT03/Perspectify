@@ -43,7 +43,7 @@ div.textBox {
 }
 
 .addButton {
-    text-shadow: 0 0 3px gold
+    text-shadow: 0 0 3px rgb(0, 132, 255)
 }
 
 .addButton:hover {

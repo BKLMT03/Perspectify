@@ -62,7 +62,7 @@ const Trending = props => {
     // const queryNewsData = await axios.get("https://newsapi.org/v2/everything?q=" + searchQuery + "&language=en&sortBy=popularity&apiKey=" + key)
     const queryNewsData = await axios.get('https://newsapi.org/v2/everything?qInTitle=' + searchQuery + '&language=en&sortBy=popularity&apiKey=' + key)
     console.log(queryNewsData)
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 10; i++) {
       top5.push(queryNewsData.data.articles[i])
     }
     console.log(top5)
@@ -93,8 +93,8 @@ const Trending = props => {
               <div className="container">
               <input
                 type='text'
-                className='form-control'
-                style={{width: "300px"}}
+                className='form-control search'
+                // style={{width: "300px"}}
                 placeholder='Perspectify on a topic'
                 aria-label='Search for a topic'
                 aria-describedby='button-addon2'

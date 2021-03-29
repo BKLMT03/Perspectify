@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@500&display=swap');
 .trending {
     font-family: "Special Elite", cursive;
     color: rgb(42, 24, 24);
@@ -11,11 +12,17 @@
 }
 
 .input-group {
-    font-family: "Special Elite", cursive;
-    
+    font-family: 'Comfortaa', cursive;
 }
 .generateButton:hover {
     opacity: 0.3;
 }
 
+.search {
+    border-radius: 50px;
+    width: 700px;
+    text-align: center;
+    height: 50px;
+    font-family: 'Comfortaa', cursive;
+}
 
