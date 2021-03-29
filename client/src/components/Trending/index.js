@@ -90,9 +90,10 @@ const Trending = props => {
                 queryNewsApi()
               }}
             >
+              <div className="container">
               <input
                 type='text'
-                className='form-control'
+                className='form-control search'
                 placeholder='Search for a topic'
                 aria-label='Search for a topic'
                 aria-describedby='button-addon2'
@@ -106,6 +107,10 @@ const Trending = props => {
               >
                 Search
               </button>
+
+              </div>
+              
+              
             </form>
           </div>
         </Row>
