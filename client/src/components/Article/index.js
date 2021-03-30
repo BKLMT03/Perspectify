@@ -24,16 +24,18 @@ const Article = ({trending, query, title, description, url, image, date, source}
   const spectrum = {
     data: 
     {
-    tech: ['CNET'],
-    sports: ['ESPN'],
+    tech: ['CNET', 'Engadget', 'TechCrunch'],
+    sports: ['ESPN', 'Bleacher Report'],
     superLeft: ['Salon', 'Daily Beast', 'Black Lives Matter', 'Slate','Think Progress'],
-    midLeft: ['CNN', 'New Yorker', 'BBC News', 'Politico', 'CBS', 'The Washington Post', 'The Guardian', 'Huffington Post'],
-    center: ['Reuters', 'Al Jazeera', 'Time', 'Economist', 'Bloomberg', 'Associated Press', 'Los Angeles Times', 'ABC News', 'NPR', 'CSPAN'],
+    midLeft: ['CNN', 'New Yorker', 'BBC News', 'Politico', 'CBS', 'The Washington Post', 'The Guardian', 'Huffington Post', 'New York Times', 'NBC News'],
+    center: ['Reuters', 'Al Jazeera', 'Time', 'Economist', 'Bloomberg', 'Associated Press', 'Los Angeles Times', 'ABC News', 'NPR', 'CSPAN', 'CNBC'],
     midRight: ['The Hill', 'Russia Today', 'Fox News', 'New York Post', 'Epoch Times', 'Daily Mail'],
     superRight: ['The Blaze', 'OANN', 'News Max', 'Daily Caller', 'Breitbart News', 'Drudge Report']
     }
     
   }
+  //reformat to this with switch statement, much cleaner
+  var x = spectrum.data.center.includes(source);
 
   for (let i = 0; i < spectrum.data.tech.length; i++) {
     if (spectrum.data.tech[i] === source) {
@@ -67,7 +69,7 @@ const Article = ({trending, query, title, description, url, image, date, source}
     }
   }
   for (let i = 0; i < spectrum.data.superRight.length; i++) {
-    if (spectrum.data.midRight[i] === source) {
+    if (spectrum.data.superRight[i] === source) {
       style.border  = '3px solid purple'
     }
   }
@@ -82,7 +84,8 @@ const Article = ({trending, query, title, description, url, image, date, source}
             pathname: "/Discussion",
             state: {query: query,
                     url: url,
-                    trending: trending}
+                    trending: trending,
+                    source: source}
           }}>
             
         <div className='card m-3 shadow-sm' style={style}>
