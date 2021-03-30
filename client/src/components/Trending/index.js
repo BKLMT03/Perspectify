@@ -9,6 +9,7 @@ import newsApiKeys from '../../config/apikeys'
 import stockApiKeys from '../../config/apikeys2'
 import './style.css'
 
+
 const Trending = props => {
   const [stockData, setStockData] = useState();
   const [topicData, setTopicData] = useState([])
@@ -33,6 +34,8 @@ const Trending = props => {
   const superRight = ['The Blaze', 'OANN', 'News Max', 'Daily Caller', 'Breitbart News', 'Drudge Report'];
   // const arr = news;
   //line 12 is static news data imported from testnewsdata
+
+  
 
   const hoaxyApi = async () => {
     const options = {
