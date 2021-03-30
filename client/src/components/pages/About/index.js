@@ -19,13 +19,13 @@ function About() {
         <section>
           A wise person has said that the most important trait in the 21st
           century is intense curiosity. Curiosity allows you to progress. It
-          helps you create and realize personal goals; it encourages progress
+          helps you create and realize personal goals; it encourages growth
           and personal re-invention.
         </section>
         <br/>
         <section>
-          More and more, algorithms are ru(i/n)ning our lives. Our interests
-          worldviews are being manipulated. We
+          More and more, algorithms are ru(i/n)ning our lives. Our interests and 
+          worldviews are being manipulated with every click or tap.
         </section>
         <br/>
         <section>
