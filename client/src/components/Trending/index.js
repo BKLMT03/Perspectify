@@ -5,8 +5,8 @@ import Container from '../Container'
 import Header from '../Header'
 import Row from "react-bootstrap/Row"
 import news from '../../testnewsdata'
-import newsApiKeys from '../../config/apikeys'
-import stockApiKeys from '../../config/apikeys2'
+// import newsApiKeys from '../../config/apikeys'
+// import stockApiKeys from '../../config/apikeys2'
 import './style.css'
 
 
@@ -16,6 +16,14 @@ const Trending = props => {
   const [searchQuery, setSearchQuery] = useState('')
   const [headerState, setHeaderState] = useState('Trending Topics')
   const [isEmpty, setIsEmpty] = useState('')
+  const NEWS_KEY_ONE = process.env.REACT_APP_NEWS_KEY_ONE;
+  const NEWS_KEY_TWO = process.env.REACT_APP_NEWS_KEY_TWO;
+  const NEWS_KEY_THREE = process.env.REACT_APP_NEWS_KEY_THREE;
+  const NEWS_KEY_FOUR = process.env.REACT_APP_NEWS_KEY_FOUR;
+  const NEWS_KEY_FIVE = process.env.REACT_APP_NEWS_KEY_FIVE;
+  const NEWS_KEY_SIX = process.env.REACT_APP_NEWS_KEY_SIX;
+  const newsApiKeys = [NEWS_KEY_ONE, NEWS_KEY_TWO, NEWS_KEY_THREE, NEWS_KEY_FOUR, NEWS_KEY_FIVE, NEWS_KEY_SIX]
+  console.log(newsApiKeys)
   const topics = [
     'business',
     'entertainment',
@@ -59,11 +67,11 @@ const Trending = props => {
     });
   }
 
-  const stockApi = async () => {
-    const stockSymbol = 'GME';
-    const stockQuery = await axios.get('https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=' + stockSymbol +'&interval=5min&apikey=' + stockApiKeys[0])
-    console.log(stockQuery.data["Time Series (5min)"])
-  }
+  // const stockApi = async () => {
+  //   const stockSymbol = 'GME';
+  //   const stockQuery = await axios.get('https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=' + stockSymbol +'&interval=5min&apikey=' + stockApiKeys[0])
+  //   console.log(stockQuery.data["Time Series (5min)"])
+  // }
 
   const newsApi = async () => {
     const key =

@@ -1,13 +1,22 @@
 import { useState, useEffect, React } from "react";
 import axios from "axios";
-import newsApiKeys from "../../config/apikeys";
+
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Carousel from "../Carousel/Carosel";
 import "./ArticleDiscussionPage.css";
 import { set } from "mongoose";
+import newsApiKeys from "../../config/apikeys";
 
 const ArticleDiscussionPage = (props) => {
+  const NEWS_KEY_ONE = process.env.REACT_APP_NEWS_KEY_ONE;
+  const NEWS_KEY_TWO = process.env.REACT_APP_NEWS_KEY_TWO;
+  const NEWS_KEY_THREE = process.env.REACT_APP_NEWS_KEY_THREE;
+  const NEWS_KEY_FOUR = process.env.REACT_APP_NEWS_KEY_FOUR;
+  const NEWS_KEY_FIVE = process.env.REACT_APP_NEWS_KEY_FIVE;
+  const NEWS_KEY_SIX = process.env.REACT_APP_NEWS_KEY_SIX;
+  const newsApiKeys = [NEWS_KEY_ONE, NEWS_KEY_TWO, NEWS_KEY_THREE, NEWS_KEY_FOUR, NEWS_KEY_FIVE, NEWS_KEY_SIX]
+  //////////////////////////////////////////////////////////
   const [currentComment, setCurrentComment] = useState("");
   const [comments, setComments] = useState([]);
   const [articleData, setArticleData] = useState([]);
