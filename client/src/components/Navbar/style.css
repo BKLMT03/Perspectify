@@ -1,5 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@500&display=swap');
 nav {
-    font-family: "Special Elite", cursive;
+    font-family: 'Comfortaa', cursive;
     color: rgb(0, 0, 0);
     font-size: 1rem;
 }

@@ -2,11 +2,27 @@
     font-family: "Special Elite", cursive;
 }
 
+h3 {
+    font-weight: bold;
+
+}
+
+.stretch {
+    letter-spacing: 0.25rem;
+}
 section {
-    font-size: 1.25rem
+    font-size: 1.1rem;
+    font-family: 'Comfortaa', cursive;
+    justify-content: left;
+    margin-bottom: 10px;
 }
 
 section.disclaimer {
-    font-size: 1rem;
+    font-size: 0.75rem;
     opacity: 0.6
+}
+
+.definition {
+    font-size: 1.5rem;
+    display: inline-block;
 }

@@ -103,7 +103,7 @@ const SignUp = () => {
                     value={password} />
                 </div>
 
-                <button type="submit" className={"btn btn-primary btn-block"}
+                <button type="submit" className={"btn btn-block"}
                 onClick={addUser}>Sign Up</button>
                 <p className="forgot-password text-right">
                     Already registered <a href="./login">Sign in</a>

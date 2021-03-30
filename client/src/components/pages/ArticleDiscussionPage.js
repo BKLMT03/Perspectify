@@ -19,6 +19,56 @@ const ArticleDiscussionPage = (props) => {
   const [articleStatus, setArticleStatus] = useState(0);
   const top5 = [];
 
+  const spectrum = {
+    data: 
+    {
+    tech: ['CNET', 'Engadget', 'TechCrunch'],
+    sports: ['ESPN', 'Bleacher Report'],
+    superLeft: ['Salon', 'Daily Beast', 'Black Lives Matter', 'Slate','Think Progress'],
+    midLeft: ['CNN', 'New Yorker', 'BBC News', 'Politico', 'CBS', 'The Washington Post', 'The Guardian', 'Huffington Post', 'New York Times', 'NBC News'],
+    center: ['Reuters', 'Al Jazeera', 'Time', 'Economist', 'Bloomberg', 'Associated Press', 'Los Angeles Times', 'ABC News', 'NPR', 'CSPAN', 'CNBC'],
+    midRight: ['The Hill', 'Russia Today', 'Fox News', 'New York Post', 'Epoch Times', 'Daily Mail'],
+    superRight: ['The Blaze', 'OANN', 'News Max', 'Daily Caller', 'Breitbart News', 'Drudge Report']
+    }
+    
+  }
+
+  const style = {};
+
+  const techX = spectrum.data.tech.includes(props.location.state.source);
+  const sportsX = spectrum.data.sports.includes(props.location.state.source);
+  const superLeftX = spectrum.data.superLeft.includes(props.location.state.source);
+  const midLeftX = spectrum.data.midLeft.includes(props.location.state.source);
+  const centerX = spectrum.data.center.includes(props.location.state.source);
+  const midRightX = spectrum.data.midRight.includes(props.location.state.source);
+  const superRightX = spectrum.data.superRight.includes(props.location.state.source);
+
+  switch (true) {
+    case techX:
+      style.color = "turquoise"
+      break;
+    case sportsX:
+      style.color = "red"
+      break;
+    case superLeftX:
+      style.color = "pink"
+      break;
+    case midLeftX:
+      style.color = "yellow"
+      break;
+    case centerX:
+      style.color = "green"
+      break;
+    case midRightX:
+      style.color = "orange"
+      break;
+    case superRightX:
+      style.color = "purple"
+      break;
+    default:
+      break;
+  }
+
   const updateUserStats = async () => {
     
   }
@@ -66,8 +116,11 @@ const ArticleDiscussionPage = (props) => {
         top5.push(queryNewsData.data.articles[i]);
       }
     }
+    var filtered = top5.filter(function(x) {
+      return x !== undefined;
+    });
     
-    setArticleData(top5);
+    setArticleData(filtered);
     setActiveArticleUrl(props.location.state.url);
   };
 
@@ -182,7 +235,7 @@ const ArticleDiscussionPage = (props) => {
       <div>
         <Row className="justify-content-center">
           <div className="articleSection">
-            <h2>{activeArticleTitle}</h2>
+            <h2 style={style}>{activeArticleTitle} - {props.location.state.source}</h2>
             <div>
               <div dangerouslySetInnerHTML={{ __html: activeArticleContent }} />
             </div>

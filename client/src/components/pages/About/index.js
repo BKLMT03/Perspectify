@@ -8,53 +8,52 @@ function About() {
     <Container className="about">
       <Row>
         <hr />
-        <h3>per &#183; SPEK &#183; ti &#183; fy</h3>
-        <span>VERB: </span>
-        <p style={{ display: "inline" }}>
-          to put something--anything--into a wider, deeper perspective.
+        <h3 className="stretch">per &#183; SPEK &#183; ti &#183; fy</h3>
+        <span className="definition">VERB: </span>
+        <p className="definition">
+          To put something into a wider, deeper perspective.
         </p>
         <hr />
       </Row>
       <Row>
         <section>
           A wise person has said that the most important trait in the 21st
-          century is intense curiosity. Curiosity allows you to progress. It
-          helps you create and realize personal goals; it encourages growth
-          and personal re-invention.
+          century is <strong>intense curiosity</strong>. Curiosity allows you to
+          progress. It helps you create and realize personal goals; it
+          encourages progress and personal re-invention.
         </section>
-        <br/>
+        <br />
         <section>
-          More and more, algorithms are ru(i/n)ning our lives. Our interests and 
-          worldviews are being manipulated with every click or tap.
+          More and more, algorithms are ru(i/n)ning our lives. Our interests and
+          worldviews are being manipulated. We are being shielded from
+          experiences and ideas that may make us uncomfortable.
         </section>
-        <br/>
+        <br />
         <section>
-          <span>Perspectify</span> helps you rise above the algorithm and jostle
+          <strong>Perspectify</strong> helps you rise above the algorithm and jostle
           your comfort so you can better develop your own ideas and form your
           own well-informed opinions on current events.
         </section>
-        <br/>
-        <br/>
-        <h3>How You Perspectify</h3>
-        <br/>
+        <br />
+        <br />
+        <h3 className="stretch mt-4">How To Perspectify</h3>
+        <br />
         <section>
-          We provide you some recent hot topics to choose from, or you can look
-          up your own. We'll provide a collection of reporting on that topic
-          from several different perspectives*.
+          We provide you with some recent hot topics to choose from or you can
+          look up your own. We'll show you a collection of reporting on your
+          chosen topic from several different perspectives*.
         </section>
-        <br/>
+        <br />
         <section>
           Once you sign up, you'll be able to use your deeper knowledge to have
           meaningful discussions with other Perspectified minds. You'll also
           have a profile page that will keep score&#8273; of how curious you've
           been and allow you to save articles for later.
         </section>
-        <br/>
-        <section>
-         <h6>So take a leap, escape your echo chamber, and challege your beliefs.</h6>
-        </section>
+        <br />
+        <section>It is simple to Perspectify.</section>
       </Row>
-      <hr/>
+      <hr />
       <Row>
         <section className="disclaimer">
           *We carefully curated media sources for our articles based on where

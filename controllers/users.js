@@ -2,19 +2,62 @@ const User = require('../models/User')
 
 exports.getUsers = async (req, res, next) => {
     const query = req.query;
+    const body = req.body;
     console.log(query)
-    try {
-        const user = await User.find(query);
-        return res.status(200).json({
-            success: true,
-            data: user
-        })
-    } catch (error) {
-        return res.status(500).json({
-            success: false,
-            error: "Server error"
-        })
+    if (body.request === "all") {
+        console.log("grab all users")
+        try {
+            const user = await User.find();
+            return res.status(200).json({
+                success: true,
+                data: user
+            })
+        } catch (error) {
+            return res.status(500).json({
+                success: false,
+                error: "Server error"
+            })
+        }
+    } else if (!req.query.password) {
+        console.log("query without password")
+        console.log(req.query)
+        try {
+            const user = await User.find({email: req.query.query});
+            return res.status(200).json({
+                success: true,
+                data: user
+            })
+        } catch (error) {
+            return res.status(500).json({
+                success: false,
+                error: "Server error"
+            })
+        }
+    } else {
+        console.log("someones trying to log in")
+        console.log(req.query)
+        try {
+            const user = await User.find({email: req.query.email, password: req.query.password});
+            if (user.length > 0) {
+                return res.status(200).json({
+                    success: true,
+                    data: user
+                })
+            } else {
+                return res.status(404).json({
+                    success: false,
+                    message: "Wrong login credentials"
+                })
+            }   
+            
+        } catch (error) {
+            return res.status(500).json({
+                success: false,
+                error: "Server error"
+            })
+        }
     }
+    
 }
 
 exports.addUser = async (req, res, next) => {

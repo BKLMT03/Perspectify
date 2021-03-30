@@ -35,7 +35,8 @@ const Carosel = ({data, query, relatedOrTrending}) => {
                     to={{
                       pathname: "/Discussion",
                       state: {query: query,
-                              url: item.url}
+                              url: item.url,
+                              source: item.source.name}
                     }}>
                     Click to load this article ^
                   </Link>

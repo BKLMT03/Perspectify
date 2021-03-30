@@ -24,8 +24,8 @@ function Header () {
            
         </p>
         <p>
-          Find the latest news on trending topics from a variety of news sources
-          and points of view.
+          Easily find the latest news on trending topics from a variety of news sources
+          and points of view all in one place.
         </p>
         <p>Sign up to discuss with other PERSPECTIFIED minds.</p>
       </Row>

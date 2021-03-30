@@ -9,11 +9,13 @@ import newsApiKeys from '../../config/apikeys'
 import stockApiKeys from '../../config/apikeys2'
 import './style.css'
 
+
 const Trending = props => {
   const [stockData, setStockData] = useState();
   const [topicData, setTopicData] = useState([])
   const [searchQuery, setSearchQuery] = useState('')
   const [headerState, setHeaderState] = useState('Trending Topics')
+  const [isEmpty, setIsEmpty] = useState('')
   const topics = [
     'business',
     'entertainment',
@@ -23,6 +25,7 @@ const Trending = props => {
     'technology',
     'general'
   ]
+  const emptyResults = ['That is a lot of empty....', 'Nothing to see here....', 'I think someone messed up', 'Do you even search bro...', 'Awks', 'Smells like teen spirit....and a bad search query', "Couldn't think of anything better eh?", "*sad violin plays softly*"]
   const top5 = []
   const superLeft = ['Salon', 'Daily Beast', 'Black Lives Matter', 'Slate','Think Progress'];
   const midLeft = ['CNN', 'New Yorker', 'BBC', 'Politico', 'CBS', 'Washington Post', 'The Guardian', 'Huffington Post'];
@@ -31,6 +34,30 @@ const Trending = props => {
   const superRight = ['The Blaze', 'OANN', 'News Max', 'Daily Caller', 'Breitbart News', 'Drudge Report'];
   // const arr = news;
   //line 12 is static news data imported from testnewsdata
+
+  
+
+  const hoaxyApi = async () => {
+    const options = {
+      method: 'GET',
+      url: 'https://api-hoaxy.p.rapidapi.com/articles',
+      params: {
+        query: searchQuery + ' AND date_published:[2016-10-28 TO 2016-12-04]',
+        sort_by: 'relevant',
+        use_lucene_syntax: 'true'
+      },
+      headers: {
+        'x-rapidapi-key': '069b892a66msh2d995309be35fddp16e393jsnbb12494f3f8d',
+        'x-rapidapi-host': 'api-hoaxy.p.rapidapi.com'
+      }
+    };
+    
+    axios.request(options).then(function (response) {
+      console.log(response.data);
+    }).catch(function (error) {
+      console.error(error);
+    });
+  }
 
   const stockApi = async () => {
     const stockSymbol = 'GME';
@@ -70,6 +97,7 @@ const Trending = props => {
     // const queryNewsData = await axios.get("https://newsapi.org/v2/everything?q=" + searchQuery + "&language=en&sortBy=popularity&apiKey=" + key)
     const queryNewsData = await axios.get('https://newsapi.org/v2/everything?qInTitle=' + searchQuery + '&language=en&sortBy=popularity&apiKey=' + key)
     console.log(queryNewsData)
+    //filter results to include only sources in our chosen lists
     for (let i = 0; i < 10; i++) {
       top5.push(queryNewsData.data.articles[i])
     }
@@ -79,12 +107,18 @@ const Trending = props => {
       return x !== undefined;
     });
     console.log(filtered)
+    if (filtered.length < 1) {
+      const emptyText =
+      emptyResults[Math.floor(Math.random() * Math.floor(emptyResults.length))]
+      setIsEmpty(emptyText);
+    }
     setTopicData(filtered)
     setHeaderState('Search results...')
   }
 
   useEffect(async () => {
-  await newsApi();  
+  await newsApi();
+  
   }, [])
 
   return (
@@ -141,14 +175,17 @@ const Trending = props => {
                         url={item.url}
                         image={item.urlToImage}
                         date={item.publishedAt.substr(0,10)}
+                        source={item.source.name}
                       />
                     </div>
                   )
-                } 
+                }
             })}
           </div>
+          <h2><br></br>{isEmpty}<br></br></h2>
         </Row>
       </div>
+      <iframe width="768" height="432" src="https://www.youtube.com/embed/FvWiCclESL8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </Container>
   )
 }

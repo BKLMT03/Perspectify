@@ -1,4 +1,4 @@
-import React from "react"
+import {React, useState, useEffect} from "react"
 import Article from "../Article"
 import Col from "../Col"
 import Row from "../Row"
@@ -7,13 +7,16 @@ import ProfilePic from "../ProfilePic"
 import Container from "../Container"
 import DonutChart from "../DonutChart"
 import "./style.css"
+import axios from "axios"
 
-function Profile() {
+const Profile = (props) => {
+    
+
     return (
         <div>
             <Row>
                 <Col size="2"><ProfilePic></ProfilePic></Col>
-                <Col size="3"><ProfileName></ProfileName></Col>
+                <Col size="3"><ProfileName data={props.location.state.data.data}></ProfileName></Col>
             </Row>
             <br>
             </br>
