@@ -1,13 +1,16 @@
 {
   "name": "perspectify",
   "version": "1.0.0",
-  "engines": {"node": "14.x"},
+  "engines": {
+    "node": "14.x"
+  },
   "description": "back end for perspectify",
   "main": "server.js",
   "scripts": {
     "start": "node server",
     "build": "cd client && npm run build",
     "install-client": "cd client && npm install",
+    "heroku-postbuild": "npm run install-client && npm run build",
     "server": "nodemon server",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\""
