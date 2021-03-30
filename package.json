@@ -1,6 +1,7 @@
 {
   "name": "perspectify",
   "version": "1.0.0",
+  "engines": {"node": "14.x"},
   "description": "back end for perspectify",
   "main": "server.js",
   "scripts": {
