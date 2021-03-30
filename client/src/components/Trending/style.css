@@ -31,3 +31,8 @@
     margin-top: 10px;
 }
 
+.search:focus {
+    transition: all .2s ease-in-out;
+    transform: scale(1.1);
+}
+
