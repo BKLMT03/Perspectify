@@ -167,7 +167,7 @@ const Trending = props => {
   }
 
   useEffect(async () => {
-  await newsApi();
+  // await newsApi();
   
   }, [])
 
