@@ -123,7 +123,7 @@ const ArticleDiscussionPage = (props) => {
       }
     } else {
       setRelatedOrTrending(0);
-      const gNewsDataQuery = await axios.get("https://gnews.io/api/v4/search?q=" + props.location.state.query + "&language=en&country=us&sortby=relevance&token=" + key)
+      const gNewsDataQuery = await axios.get("https://gnews.io/api/v4/search?q=" + props.location.state.query + "&language=en&country=us&sortby=publishedAt&token=" + key)
       for (let i = 0; i < 5; i++) {
         top5.push(gNewsDataQuery.data.articles[i]);
       }

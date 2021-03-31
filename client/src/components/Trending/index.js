@@ -48,11 +48,19 @@ const Trending = props => {
   ]
   const emptyResults = ['That is a lot of empty....', 'Nothing to see here....', 'I think someone messed up', 'Do you even search bro...', 'Awks', 'Smells like teen spirit....and a bad search query', "Couldn't think of anything better eh?", "*sad violin plays softly*"]
   const top5 = []
-  const superLeft = ['Salon', 'Daily Beast', 'Black Lives Matter', 'Slate','Think Progress'];
-  const midLeft = ['CNN', 'New Yorker', 'BBC', 'Politico', 'CBS', 'Washington Post', 'The Guardian', 'Huffington Post'];
-  const center = ['Reuters', 'Al Jazeera', 'Time', 'Economist', 'Bloomberg', 'Associated Press', 'Los Angeles Times', 'ABC News', 'NPR', 'CSPAN'];
-  const midRight = ['The Hill', 'Russia Today', 'Fox News', 'New York Post', 'Epoch Times', 'Daily Mail'];
-  const superRight = ['The Blaze', 'OANN', 'News Max', 'Daily Caller', 'Breitbart News', 'Drudge Report'];
+  const spectrum = {
+    data: 
+    {
+    tech: ['CNET', 'Engadget', 'TechCrunch'],
+    sports: ['ESPN', 'Bleacher Report'],
+    superLeft: ['Salon', 'Daily Beast', 'Black Lives Matter', 'Slate','Think Progress'],
+    midLeft: ['CNN', 'New Yorker', 'BBC News', 'Politico', 'CBS', 'The Washington Post', 'The Guardian', 'Huffington Post', 'New York Times', 'NBC News'],
+    center: ['Reuters', 'Al Jazeera', 'Time', 'Economist', 'Bloomberg', 'Associated Press', 'The Associated Press', 'Los Angeles Times', 'ABC News', 'NPR', 'CSPAN', 'CNBC'],
+    midRight: ['The Hill', 'Russia Today', 'Fox News', 'New York Post', 'Epoch Times', 'Daily Mail'],
+    superRight: ['The Blaze', 'OANN', 'News Max', 'Daily Caller', 'Breitbart News', 'Drudge Report']
+    }
+    
+  }
   // const arr = news;
   //line 12 is static news data imported from testnewsdata
 
@@ -94,16 +102,36 @@ const Trending = props => {
     setTopicData(gNewsData.data.articles)
   }
 
+  const techX = spectrum.data.tech;
+  const sportsX = spectrum.data.sports;
+  const superLeftX = spectrum.data.superLeft;
+  const midLeftX = spectrum.data.midLeft;
+  const centerX = spectrum.data.center;
+  const midRightX = spectrum.data.midRight;
+  const superRightX = spectrum.data.superRight;
+
   const gNewsApiQuery = async () => {
     const key =
     gApiKeys[Math.floor(Math.random() * Math.floor(gApiKeys.length))]
     console.log(key)
     console.log('generating news....')
     //&in=title &in=description &in=content &country=us &country=ca
-    const gNewsDataQuery = await axios.get("https://gnews.io/api/v4/search?q=" + searchQuery + "&language=en&country=us&sortby=relevance&token=" + key)
+    const gNewsDataQuery = await axios.get("https://gnews.io/api/v4/search?q=" + searchQuery + "&language=en&country=us&sortby=publishedAt&token=" + key)
     console.log(gNewsDataQuery.data.articles)
+    //filter for only approved news articles
+    // var filtered = gNewsDataQuery.data.articles.filter(function(x) {
+    //   if(techX.includes(x.source.name) ||
+    //       sportsX.includes(x.source.name)||
+    //       superLeftX.includes(x.source.name)||
+    //       midLeftX.includes(x.source.name)||
+    //       centerX.includes(x.source.name)||
+    //       midRightX.includes(x.source.name)||
+    //       superRightX.includes(x.source.name)) {
+    //         return x;
+    //       } 
+    // });
     var filtered = gNewsDataQuery.data.articles.filter(function(x) {
-      return x !== undefined;
+      return x !== undefined
     });
     console.log(filtered)
     if (filtered.length < 1) {
@@ -113,6 +141,22 @@ const Trending = props => {
     }
     setTopicData(filtered)
     setHeaderState('Search results...')
+  }
+
+  const commonQuery = async (data) => {
+    let wordCount = {};
+    let stringsCombined = ''
+    console.log(stringsCombined)
+    let stringSplit = stringsCombined.split(' ');
+    for (let i = 0; i < stringSplit.length; i++) {
+        if (wordCount.hasOwnProperty(stringSplit[i])) {
+            console.log('already there')
+        } else {
+            wordCount[stringSplit[i]] = stringsCombined.split(stringSplit[i]).length - 1;
+        }
+        // console.log(stringsCombined.split(stringSplit[i]).length - 1, " of ", stringSplit[i])
+        
+    }
   }
 
   const newsApi = async () => {
@@ -174,7 +218,6 @@ const Trending = props => {
   return (
     <Container>
       <Header />
-      <button onClick={gNewsApi}>Test</button>
       <Row >
           <div className='input-group pb-3 my-3 justify-content-center'>
             <form
