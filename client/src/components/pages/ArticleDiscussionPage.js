@@ -17,6 +17,16 @@ const ArticleDiscussionPage = (props) => {
   const NEWS_KEY_SIX = process.env.REACT_APP_NEWS_KEY_SIX;
   const newsApiKeys = [NEWS_KEY_ONE, NEWS_KEY_TWO, NEWS_KEY_THREE, NEWS_KEY_FOUR, NEWS_KEY_FIVE, NEWS_KEY_SIX]
   //////////////////////////////////////////////////////////
+  const GNEWS_KEY_ONE = process.env.REACT_APP_GNEWS_KEY_ONE
+  const GNEWS_KEY_TWO = process.env.REACT_APP_GNEWS_KEY_TWO
+  const GNEWS_KEY_THREE = process.env.REACT_APP_GNEWS_KEY_THREE
+  const GNEWS_KEY_FOUR = process.env.REACT_APP_GNEWS_KEY_FOUR
+  const GNEWS_KEY_FIVE = process.env.REACT_APP_GNEWS_KEY_FIVE
+  const GNEWS_KEY_SIX = process.env.REACT_APP_GNEWS_KEY_SIX
+  const GNEWS_KEY_SEVEN = process.env.REACT_APP_GNEWS_KEY_SEVEN
+  const GNEWS_KEY_EIGHT = process.env.REACT_APP_GNEWS_KEY_EIGHT
+  const gApiKeys = [GNEWS_KEY_ONE, GNEWS_KEY_TWO, GNEWS_KEY_THREE, GNEWS_KEY_FOUR, GNEWS_KEY_FIVE, GNEWS_KEY_SIX, GNEWS_KEY_SEVEN, GNEWS_KEY_EIGHT]
+  /////////////////////////////////////////////////////////
   const [currentComment, setCurrentComment] = useState("");
   const [comments, setComments] = useState([]);
   const [articleData, setArticleData] = useState([]);
@@ -98,6 +108,32 @@ const ArticleDiscussionPage = (props) => {
     }
     
     
+  };
+
+  const gNewsApiQuery = async () => {
+    const key =
+    gApiKeys[Math.floor(Math.random() * Math.floor(gApiKeys.length))];
+    console.log(key);
+    console.log("generating news....");
+    if (!props.location.state.query) {
+      setRelatedOrTrending(1);
+      const gNewsData = await axios.get("https://gnews.io/api/v4/top-headlines?lang=en&country=us&token=" + key)
+      for (let i = 0; i < 5; i++) {
+        top5.push(gNewsData.data.articles[i]);
+      }
+    } else {
+      setRelatedOrTrending(0);
+      const gNewsDataQuery = await axios.get("https://gnews.io/api/v4/search?q=" + props.location.state.query + "&language=en&country=us&sortby=relevance&token=" + key)
+      for (let i = 0; i < 5; i++) {
+        top5.push(gNewsDataQuery.data.articles[i]);
+      }
+    }
+    var filtered = top5.filter(function(x) {
+      return x !== undefined;
+    });
+    
+    setArticleData(filtered);
+    setActiveArticleUrl(props.location.state.url);
   };
 
   const queryNewsApi = async () => {
@@ -214,7 +250,8 @@ const ArticleDiscussionPage = (props) => {
   };
 
   useEffect(async () => {
-    await queryNewsApi();
+    // await queryNewsApi();
+    await gNewsApiQuery();
     await handleRemoveInput();
     await getComments();
     await getArticleData();
