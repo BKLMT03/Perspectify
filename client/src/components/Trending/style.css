@@ -5,6 +5,7 @@
     text-shadow: 0 0 5px rgb(65, 0, 0);
     font-size: 2rem;
     letter-spacing: 1px;
+    padding: 20px
 }
 
 .topics {
@@ -36,3 +37,21 @@
     transform: scale(1.1);
 }
 
+.sourceInfo {
+    font-family: "Comfortaa", cursive;
+}
+
+.sourceKey {
+    text-align: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    background-color: white
+}
+
+ .keyCard {
+    font-family: "Comfortaa", cursive;
+    border: solid 1px black;
+    display: flex;
+    width: 80%;
+    padding: 10px
+}
