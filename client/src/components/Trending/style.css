@@ -30,6 +30,7 @@
 .search-button {
     border: 0.5px solid black;
     margin-top: 10px;
+    margin-bottom: 90px
 }
 
 .search:focus {
@@ -54,4 +55,8 @@
     display: flex;
     width: 80%;
     padding: 10px
+}
+
+#trending-section {
+    box-shadow: 0 0 10px black
 }

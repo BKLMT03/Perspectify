@@ -30,7 +30,7 @@ function Header() {
       <Row>
         <p></p>
         <p>
-          Easily find the latest news on trending topics from a variety of news
+          Easily find the latest news on <a href="#trending-section">trending topics</a> from a variety of news
           sources and points of view all in one place.
         </p>
 

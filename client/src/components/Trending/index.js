@@ -1,4 +1,5 @@
 import { useState, useEffect, React } from 'react'
+import { Link } from "react-router-dom"
 import axios from 'axios'
 import Article from '../Article'
 import Card from "react-bootstrap/Card"
@@ -218,14 +219,14 @@ const Trending = props => {
           </form>
         </div>
       </Row>
-      <div className='container-fluid border shadow'>
-        <h1 className='trending pt-4'>{headerState}</h1>
+      <div className='container-fluid border' id="trending-section">
+        <a href="#trending-section"><h1 className='trending pt-4 animate__animated animate__pulse'>{headerState}</h1></a>
         <Row className="justify-content-center">
           <Card className="keyCard">
                 <h4 style={{ backgroundColor: "white"}}>Source Key</h4>
                 <p style={{ backgroundColor: "white" }}>
                   The coloured borders represent the type of article and/or the
-                  ideological leaning of the source. See <strong>About</strong>{' '}
+                  ideological leaning of the source. See <Link to="/about">About</Link>{' '}
                   page for more information.
                 </p>
             <Container style={{ backgroundColor: "white" }}>
