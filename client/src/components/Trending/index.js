@@ -1,18 +1,23 @@
 import { useState, useEffect, React } from 'react'
+import { Link } from "react-router-dom"
 import axios from 'axios'
 import Article from '../Article'
+import Card from "react-bootstrap/Card"
 import Container from '../Container'
+import Col from '../Col'
 import Header from '../Header'
-import Row from "react-bootstrap/Row"
+import Row from 'react-bootstrap/Row'
 import news from '../../testnewsdata'
+import newsApiKeys from '../../config/apikeys'
+import stockApiKeys from '../../config/apikeys2'
+import { FaNewspaper } from 'react-icons/fa'
 import Particles from "react-particles-js"
 // import newsApiKeys from '../../config/apikeys'
 // import stockApiKeys from '../../config/apikeys2'
 import './style.css'
 
-
 const Trending = props => {
-  const [stockData, setStockData] = useState();
+  const [stockData, setStockData] = useState()
   const [topicData, setTopicData] = useState([])
   const [searchQuery, setSearchQuery] = useState('')
   const [headerState, setHeaderState] = useState('Trending Topics')
@@ -46,7 +51,16 @@ const Trending = props => {
     'technology',
     'general'
   ]
-  const emptyResults = ['That is a lot of empty....', 'Nothing to see here....', 'I think someone messed up', 'Do you even search bro...', 'Awks', 'Smells like teen spirit....and a bad search query', "Couldn't think of anything better eh?", "*sad violin plays softly*"]
+  const emptyResults = [
+    'That is a lot of empty....',
+    'Nothing to see here....',
+    'I think someone messed up',
+    'Do you even search bro...',
+    'Awks',
+    'Smells like teen spirit....and a bad search query',
+    "Couldn't think of anything better eh?",
+    '*sad violin plays softly*'
+  ]
   const top5 = []
   const spectrum = {
     data: 
@@ -77,13 +91,16 @@ const Trending = props => {
         'x-rapidapi-key': '069b892a66msh2d995309be35fddp16e393jsnbb12494f3f8d',
         'x-rapidapi-host': 'api-hoaxy.p.rapidapi.com'
       }
-    };
-    
-    axios.request(options).then(function (response) {
-      console.log(response.data);
-    }).catch(function (error) {
-      console.error(error);
-    });
+    }
+
+    axios
+      .request(options)
+      .then(function (response) {
+        console.log(response.data)
+      })
+      .catch(function (error) {
+        console.error(error)
+      })
   }
 
   // const stockApi = async () => {
@@ -174,10 +191,10 @@ const Trending = props => {
       }
     }
     console.log(top5)
-    var filtered = top5.filter(function(x) {
-      return x !== undefined;
-   });
-   console.log(filtered)
+    var filtered = top5.filter(function (x) {
+      return x !== undefined
+    })
+    console.log(filtered)
     setTopicData(filtered)
     setHeaderState('Trending Topics')
   }
@@ -189,7 +206,12 @@ const Trending = props => {
     console.log('generating news....')
 
     // const queryNewsData = await axios.get("https://newsapi.org/v2/everything?q=" + searchQuery + "&language=en&sortBy=popularity&apiKey=" + key)
-    const queryNewsData = await axios.get('https://newsapi.org/v2/everything?qInTitle=' + searchQuery + '&language=en&sortBy=popularity&apiKey=' + key)
+    const queryNewsData = await axios.get(
+      'https://newsapi.org/v2/everything?qInTitle=' +
+        searchQuery +
+        '&language=en&sortBy=popularity&apiKey=' +
+        key
+    )
     console.log(queryNewsData)
     //filter results to include only sources in our chosen lists
     for (let i = 0; i < 10; i++) {
@@ -197,14 +219,16 @@ const Trending = props => {
     }
     console.log(top5)
 
-    var filtered = top5.filter(function(x) {
-      return x !== undefined;
-    });
+    var filtered = top5.filter(function (x) {
+      return x !== undefined
+    })
     console.log(filtered)
     if (filtered.length < 1) {
       const emptyText =
-      emptyResults[Math.floor(Math.random() * Math.floor(emptyResults.length))]
-      setIsEmpty(emptyText);
+        emptyResults[
+          Math.floor(Math.random() * Math.floor(emptyResults.length))
+        ]
+      setIsEmpty(emptyText)
     }
     setTopicData(filtered)
     setHeaderState('Search results...')
@@ -244,16 +268,58 @@ const Trending = props => {
               >
                 Search
               </button>
-
-              </div>
-              
-              
-            </form>
-          </div>
+            </div>
+          </form>
+        </div>
+      </Row>
+      <div className='container-fluid border' id="trending-section">
+        <a href="#trending-section"><h1 className='trending pt-4 animate__animated animate__pulse'>{headerState}</h1></a>
+        <Row className="justify-content-center">
+          <Card className="keyCard">
+                <h4 style={{ backgroundColor: "white"}}>Source Key</h4>
+                <p style={{ backgroundColor: "white" }}>
+                  The coloured borders represent the type of article and/or the
+                  ideological leaning of the source. See <Link to="/about">About</Link>{' '}
+                  page for more information.
+                </p>
+            <Container style={{ backgroundColor: "white" }}>
+              <Row className='sourceKey' style={{ backgroundColor: "white"}}>
+                <Col size='3'>
+                  <h5>
+                    <FaNewspaper style={{ color: 'turquoise' }} /> Tech
+                  </h5>
+                  <h5>
+                    <FaNewspaper style={{ color: 'red' }} /> Sports
+                  </h5>
+                </Col>
+                <Col size='3'>
+                  <h5>
+                    <FaNewspaper style={{ color: 'pink' }} /> Far Left
+                  </h5>
+                  <h5>
+                    <FaNewspaper style={{ color: 'yellow' }} /> Skews Left
+                  </h5>
+                </Col>
+                <Col size='3'>
+                  <h5>
+                    <FaNewspaper style={{ color: 'green' }} /> Centrist
+                  </h5>
+                  <h5>
+                    <FaNewspaper style={{ color: 'orange' }} /> Skews Right
+                  </h5>
+                </Col>
+                <Col size='3'>
+                  <h5>
+                    <FaNewspaper style={{ color: 'purple' }} /> Far Right
+                  </h5>
+                  <h5>
+                    <FaNewspaper style={{ color: 'grey' }} /> Not Available
+                  </h5>
+                </Col>
+              </Row>
+            </Container>
+          </Card>
         </Row>
-      <div className='container-fluid border shadow'>
-        <h1 className='trending pt-3'>{headerState}</h1>
-        
         {/* <button onClick={() => newsApi()}> Generate News </button> */}
         <Row>
           <div>
@@ -276,10 +342,22 @@ const Trending = props => {
                 }
             })}
           </div>
-          <h2><br></br>{isEmpty}<br></br></h2>
+          <h2>
+            <br></br>
+            {isEmpty}
+            <br></br>
+          </h2>
         </Row>
       </div>
-      <iframe width="768" height="432" src="https://www.youtube.com/embed/FvWiCclESL8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <iframe
+        width='768'
+        height='432'
+        src='https://www.youtube.com/embed/FvWiCclESL8'
+        title='YouTube video player'
+        frameborder='0'
+        allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
+        allowfullscreen
+      ></iframe>
     </Container>
   )
 }

@@ -7,7 +7,7 @@ function Logo () {
   return (
     <div className='container-fluid mt-5 mb-2'>
       <Row>
-        <h1 className='logo'>
+        <h1 className='logo animate__animated animate__zoomIn'>
           Perspect<span className='i'>i</span>
           <span className='f'>f</span>
           <span className='y'>y</span>
