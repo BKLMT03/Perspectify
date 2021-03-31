@@ -14,6 +14,7 @@ connectDB();
 const comments = require('./routes/comments')
 const users = require('./routes/users')
 const articles = require('./routes/articles')
+const news = require('./routes/news')
 
 const app = express();
 
@@ -27,6 +28,7 @@ if (process.env.NODE_ENV === 'development') {
 app.use('/api/v1/comments', comments)
 app.use('/api/v1/users', users)
 app.use('/api/v1/articles', articles)
+app.use('/api/v1/news', news)
 
 //production deployment after running npm run build and having build folder
 if (process.env.NODE_ENV === 'production') {

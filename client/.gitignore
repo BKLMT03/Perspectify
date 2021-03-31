@@ -26,3 +26,5 @@ node_modules
 src/config/apikeys.js
 src/config/apikeys2.js
 config/config.env
+keys.env
+.env

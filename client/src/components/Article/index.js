@@ -28,7 +28,7 @@ const Article = ({trending, query, title, description, url, image, date, source}
     sports: ['ESPN', 'Bleacher Report'],
     superLeft: ['Salon', 'Daily Beast', 'Black Lives Matter', 'Slate','Think Progress'],
     midLeft: ['CNN', 'New Yorker', 'BBC News', 'Politico', 'CBS', 'The Washington Post', 'The Guardian', 'Huffington Post', 'New York Times', 'NBC News'],
-    center: ['Reuters', 'Al Jazeera', 'Time', 'Economist', 'Bloomberg', 'Associated Press', 'Los Angeles Times', 'ABC News', 'NPR', 'CSPAN', 'CNBC'],
+    center: ['Reuters', 'Al Jazeera', 'Time', 'Economist', 'Bloomberg', 'Associated Press', 'The Associated Press', 'Los Angeles Times', 'ABC News', 'NPR', 'CSPAN', 'CNBC'],
     midRight: ['The Hill', 'Russia Today', 'Fox News', 'New York Post', 'Epoch Times', 'Daily Mail'],
     superRight: ['The Blaze', 'OANN', 'News Max', 'Daily Caller', 'Breitbart News', 'Drudge Report']
     }

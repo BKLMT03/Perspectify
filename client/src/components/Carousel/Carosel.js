@@ -22,7 +22,7 @@ const Carosel = ({data, query, relatedOrTrending}) => {
                 <Carousel.Item>
                   <img
                     className="d-block img-car"
-                    src={item.urlToImage}
+                    src={item.image}
                     alt="First slide"
                   />
                   <Carousel.Caption>
