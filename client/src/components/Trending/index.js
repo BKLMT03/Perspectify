@@ -231,36 +231,36 @@ const Trending = props => {
             <Container style={{ backgroundColor: "white" }}>
               <Row className='sourceKey' style={{ backgroundColor: "white"}}>
                 <Col size='3'>
-                  <h4>
+                  <h5>
                     <FaNewspaper style={{ color: 'turquoise' }} /> Tech
-                  </h4>
-                  <h4>
+                  </h5>
+                  <h5>
                     <FaNewspaper style={{ color: 'red' }} /> Sports
-                  </h4>
+                  </h5>
                 </Col>
                 <Col size='3'>
-                  <h4>
+                  <h5>
                     <FaNewspaper style={{ color: 'pink' }} /> Far Left
-                  </h4>
-                  <h4>
+                  </h5>
+                  <h5>
                     <FaNewspaper style={{ color: 'yellow' }} /> Skews Left
-                  </h4>
+                  </h5>
                 </Col>
                 <Col size='3'>
-                  <h4>
+                  <h5>
                     <FaNewspaper style={{ color: 'green' }} /> Centrist
-                  </h4>
-                  <h4>
+                  </h5>
+                  <h5>
                     <FaNewspaper style={{ color: 'orange' }} /> Skews Right
-                  </h4>
+                  </h5>
                 </Col>
                 <Col size='3'>
-                  <h4>
+                  <h5>
                     <FaNewspaper style={{ color: 'purple' }} /> Far Right
-                  </h4>
-                  <h4>
+                  </h5>
+                  <h5>
                     <FaNewspaper style={{ color: 'grey' }} /> Not Available
-                  </h4>
+                  </h5>
                 </Col>
               </Row>
             </Container>
