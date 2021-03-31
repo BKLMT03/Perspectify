@@ -65,7 +65,7 @@ const SignUp = () => {
     }
 
     return (
-        <div>
+        <div data-testid="SignUpPage">
             <div className="auth-wrapper">
                 <div className={signUpSuccess === "Done!" ? "auth-inner signUp" : "auth-inner"}>
             <form

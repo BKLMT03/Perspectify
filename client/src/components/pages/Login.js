@@ -3,7 +3,7 @@ import './Login.css'
 
 const Login = () => {
     return (
-        <div>
+        <div data-testid="LogInPage">
             <div className="auth-wrapper">
                 <div className="auth-inner">
             <form>
