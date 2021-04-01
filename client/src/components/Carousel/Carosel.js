@@ -4,30 +4,43 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import "./Carosel.css";
 import Carousel from "react-bootstrap/Carousel";
+import {Link} from 'react-router-dom'
 
-const Carosel = ({ data }) => {
-  // const [articleData, setArticleData] = useState([])
-  // useEffect(() => {
-  //   setCarouselData(data)
-  // }, [])
-
+const Carosel = ({data, query, relatedOrTrending}) => {
+  console.log(data)
+  console.log(query)
+  const reloadPage = () => {
+    window.location.reload();
+  }
   return (
       <Container className="mt-5">
         <Row className="justify-content-center">
-          <h2>Related Articles</h2>
+          <h2>{relatedOrTrending > 0 ? "More trending articles" : "Related articles"}</h2>
           <Carousel>
             {data.map((item) => {
               return (
                 <Carousel.Item>
                   <img
-                    className="d-block"
-                    src={item.urlToImage}
+                    className="d-block img-car"
+                    src={item.image}
                     alt="First slide"
-                    style={{ height: "300px" }}
                   />
                   <Carousel.Caption>
                     <p className="car">{item.title}</p>
                   </Carousel.Caption>
+                  <button className='btn' type="onClick" href="/Discussion"
+                  onClick={reloadPage}>
+                  <Link className='nav-link'
+                    // to='/Discussion'
+                    to={{
+                      pathname: "/Discussion",
+                      state: {query: query,
+                              url: item.url,
+                              source: item.source.name}
+                    }}>
+                    Click to load this article ^
+                  </Link>
+                  </button>
                 </Carousel.Item>
               );
             })}

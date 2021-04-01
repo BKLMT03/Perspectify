@@ -1,6 +1,7 @@
-import React from 'react'
+import {React, useState, useEffec} from 'react'
 import { Doughnut } from '@reactchartjs/react-chart.js'
 
+const DonutChart = () => {
 const data = {
   labels: ['Very-Left','Left','Center','Right', 'Very-Right'],
   datasets: [
@@ -26,10 +27,11 @@ const data = {
   ],
 }
 
-const DonutChart = () => (
-  <>
+return (
+    <div>
     <Doughnut data={data} width="300px" />
-  </>
-)
+    </div>
+  )
+}
 
 export default DonutChart

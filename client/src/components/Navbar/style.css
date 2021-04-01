@@ -1,11 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@500&display=swap');
 nav {
-    font-family: "Special Elite", cursive;
+    font-family: 'Comfortaa', cursive;
     color: rgb(0, 0, 0);
-    font-size: 1.25rem;
-    text-shadow: 0 0 5px rgb(40, 110, 101);
+    font-size: 1rem;
 }
 
+/* .nav-link {
+    text-shadow: 0 0 3px gold
+} */
 
-.nav-link:hover{
+/* .nav-link:hover{
     opacity: 0.3;
-}
+} */

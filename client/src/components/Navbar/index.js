@@ -1,16 +1,35 @@
-import React from 'react'
+import {React, useEffect, useState} from 'react'
 import { Link } from 'react-router-dom'
 import './style.css'
+import axios from "axios"
 
-function Navbar () {
+const Navbar = () => {
+  const [activeUserData, setActiveUserData] = useState();
+  const getUserData = async () => {
+    try {
+        const res = await axios.get("/api/v1/users", {
+            params: { query: "" },
+        });
+        console.log(res.data)
+        setActiveUserData(res.data)
+    } catch (error) {
+        console.log(error)
+    }
+  }
+  useEffect(async () => {
+    await getUserData();
+    
+    }, [])
+
   return (
     <nav className='nav flex-columnn justify-content-center'>
       <li className='nav-item mb-2'>
         <Link
           className='nav-link'
-          to='/'
-          style={{ color: 'black', textShadow: '0 0 3px black' }}
-
+          to={{
+            pathname: "/",
+            state: {data: activeUserData}
+          }}
         >
           Home
         </Link>
@@ -18,8 +37,19 @@ function Navbar () {
       <li className='nav-item mb-2'>
         <Link
           className='nav-link'
-          to='/profile'
-          style={{ color: 'black', textShadow: '0 0 3px black' }}
+          to='/about'
+        >
+          About
+        </Link>
+      </li>
+
+      <li className='nav-item mb-2'>
+        <Link
+          className='nav-link'
+          to={{
+            pathname: "/profile",
+            state: {data: activeUserData}
+          }}
         >
           My Profile
         </Link>
@@ -28,7 +58,6 @@ function Navbar () {
         <Link
           className='nav-link'
           to='/login'
-          style={{ color: 'black', textShadow: '0 0 3px black' }}
         >
           LOG IN
         </Link>
@@ -37,7 +66,6 @@ function Navbar () {
         <Link
           className='nav-link'
           to='/sign-up'
-          style={{ color: 'black', textShadow: '0 0 3px black' }}
         >
           SIGN UP
         </Link>

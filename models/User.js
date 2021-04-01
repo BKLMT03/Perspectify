@@ -24,10 +24,34 @@ const UserSchema = new mongoose.Schema({
     image: {
         type: String,
         trim: true,
-        required: true
     },
     articles_read: {
         type: Number
+    },
+    read_activity: {
+        type: Array,
+        default: []
+    },
+    saved_articles:{
+        type: Array,
+        default: []
+    },
+    user_score :{
+        superLeft: {
+            type: Number
+        },
+        midLeft: {
+            type: Number
+        },
+        center: {
+            type: Number
+        },
+        midRight: {
+            type: Number
+        },
+        superRight: {
+            type: Number
+        },
     }
 })
 

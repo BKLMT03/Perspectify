@@ -1,20 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@500&display=swap');
 .trending {
     font-family: "Special Elite", cursive;
     color: rgb(42, 24, 24);
     text-shadow: 0 0 5px rgb(65, 0, 0);
     font-size: 2rem;
     letter-spacing: 1px;
+    padding: 20px
 }
 
 .topics {
     display: inline-block;
 }
 
-button {
-    font-family: "Special Elite", cursive;
-    font-size: 1.5rem
+.input-group {
+    font-family: 'Comfortaa', cursive;
 }
-
 .generateButton:hover {
     opacity: 0.3;
+}
+
+.search {
+    border-radius: 50px;
+    width: 700px;
+    text-align: center;
+    height: 50px;
+    font-family: 'Comfortaa', cursive;
+}
+
+.search-button {
+    border: 0.5px solid black;
+    margin-top: 10px;
+    margin-bottom: 90px
+}
+
+.search:focus {
+    transition: all .2s ease-in-out;
+    transform: scale(1.1);
+}
+
+.sourceInfo {
+    font-family: "Comfortaa", cursive;
+}
+
+.sourceKey {
+    text-align: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    background-color: white
+}
+
+ .keyCard {
+    font-family: "Comfortaa", cursive;
+    border: solid 1px black;
+    display: flex;
+    width: 80%;
+    padding: 10px
+}
+
+#trending-section {
+    box-shadow: 0 0 10px black
 }
