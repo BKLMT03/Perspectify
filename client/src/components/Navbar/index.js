@@ -8,7 +8,7 @@ const Navbar = () => {
   const getUserData = async () => {
     try {
         const res = await axios.get("/api/v1/users", {
-            params: { query: "jesus@gmail.com" },
+            params: { query: "" },
         });
         console.log(res.data)
         setActiveUserData(res.data)

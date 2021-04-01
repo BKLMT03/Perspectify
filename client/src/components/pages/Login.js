@@ -20,7 +20,7 @@ const Login = () => {
               console.log("logged in")
               setActiveUserData(res.data)
               clearInputs();
-              window.location.replace('/')
+              
           } else {
               console.log('something went wrong')
               clearInputs();
