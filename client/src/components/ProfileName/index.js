@@ -4,7 +4,7 @@ import './style.css'
 
 function ProfileName ({data}) {
   var loggedOrNO = false;
-    if (data.length > 0) {
+    if (/*data.length*/1 > 0) {
         console.log('someone is logged in!')
         loggedOrNO = true;
     } else {
@@ -13,7 +13,7 @@ function ProfileName ({data}) {
   return (
     <div className='userName'>
       <Row>
-        <span className='name'>{loggedOrNO ? data[0].first_name + " " + data[0].last_name : ""}</span>
+        <span className='name'>{/*loggedOrNO ? data[0].first_name + " " + data[0].last_name : ""*/}Joe Schmoe</span>
       </Row>
     </div>
   )
