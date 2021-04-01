@@ -1,0 +1,60 @@
+import React, {createContext, useReducer, useState} from 'react';
+import AppReducer from './AppReducer';
+import axios from 'axios'
+
+const initialState = {
+    token: localStorage.getItem('token'),
+    isAuthenticated: null,
+    isLoading: false,
+    user: null,
+};
+
+export const GlobalContext = createContext(initialState);
+
+//Provider component
+
+export const GlobalProvider = ({children }) => {
+    const [state, dispatch] = useReducer(AppReducer, initialState)
+
+    //actions
+    function loadUser (dispatch, getState) {
+        dispatch({type: 'USER_LOADING'});
+        axios.get('/api/v1/auth', tokenConfig(getState))
+        .then(res => dispatch({
+            type: 'USER_LOADED',
+            payload: res.data
+        }))
+        .catch(err => {
+            dispatch({
+                type: 'AUTH_ERROR'
+            })
+        })
+    }
+
+    return (<GlobalContext.Provider value={{
+        token: state.token,
+        user: state.user,
+        loadUser
+        }}>
+        {children}
+    </GlobalContext.Provider>)
+
+}
+
+export const tokenConfig = getState => {
+    //get token from localStorage
+    const token = getState().auth.token;
+
+    //set token in Headers
+    const config = {
+        headers: {
+            'Content-type': 'application/json'
+        }
+    }
+    //if token, then add to headers
+    if (token) {
+        config.header['x-auth-token'] = token;
+    }
+
+    return config;
+}

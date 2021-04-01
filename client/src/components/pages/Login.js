@@ -1,30 +1,35 @@
-import {React, useState} from 'react'
+import {React, useState, useContext} from 'react'
 import axios from 'axios'
 import './Login.css'
+import {GlobalContext} from '../../context/GlobalState'
 
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [activeUserData, setActiveUserData] = useState('');
 
+    const {loadUser} = useContext(GlobalContext)
+
     const validateLogin = async () => {
-        const config = {
-            headers: {
-              'Content-type': 'application/json'
-            }
-          }
-          const res = await axios.get("/api/v1/users", {
-            params: { email: email, password: password},
-          });
-          if (res.status === 200 || 304) {
-              console.log("logged in")
-              setActiveUserData(res.data)
-              clearInputs();
+
+        
+        // const config = {
+        //     headers: {
+        //       'Content-type': 'application/json'
+        //     }
+        //   }
+        //   const res = await axios.get("/api/v1/users", {
+        //     params: { email: email, password: password},
+        //   });
+        //   if (res.status === 200 || 304) {
+        //       console.log("logged in")
+        //       setActiveUserData(res.data)
+        //       clearInputs();
               
-          } else {
-              console.log('something went wrong')
-              clearInputs();
-          }
+        //   } else {
+        //       console.log('something went wrong')
+        //       clearInputs();
+        //   }
           
     }
 

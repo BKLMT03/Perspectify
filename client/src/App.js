@@ -1,5 +1,5 @@
 import "./App.css";
-import {React, useState, useEffect} from "react";
+import {React, useState, useEffect, useContext} from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Logo from "./components/Logo";
 import ContainerX from "./components/Container";
@@ -16,15 +16,14 @@ import Profile from "./components/Profile";
 import Particles from "./components/Particles"
 import "bootstrap/dist/css/bootstrap.min.css";
 import DarkModeToggle from "react-dark-mode-toggle";
-import {loadUser} from './actions/authActions'
-import {useDispatch} from 'react-redux'
-//import Container from reactstrap
+import {GlobalProvider, GlobalContext} from './context/GlobalState'
 
 function App() {
-  
   const [isDarkMode, setIsDarkMode] = useState(() => false);
-  const dispatch = useDispatch();
-  dispatch(loadUser())
+  // const {loadUser} = useContext(GlobalContext)
+  // console.log(context)
+  // const dispatch = useDispatch();
+  // dispatch(loadUser())
 
   const changeBackground = () => {
     if (!isDarkMode) {
@@ -38,10 +37,9 @@ function App() {
   }
   useEffect(async () => {
     await changeBackground();
-    
     })
   return (
-    <div>
+    <GlobalProvider>
       <Particles />
       <DarkModeToggle
       onChange={setIsDarkMode}
@@ -71,7 +69,7 @@ function App() {
         </ContainerX>
         <Footer />
       </Router>
-    </div>
+    </GlobalProvider>
   );
 }
 
