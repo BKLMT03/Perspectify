@@ -32,12 +32,15 @@ const SignUp = () => {
                 setEmailErr("");
                 clearInputs();
                 setSignUpSuccess("Done!")
+                window.location.replace('/login')
+                
             }
             
         } catch (error) {
             console.log(error)
             
         }
+        
 
     }
 

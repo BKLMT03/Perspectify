@@ -10,7 +10,6 @@ const Navbar = () => {
         const res = await axios.get("/api/v1/users", {
             params: { query: "" },
         });
-        console.log(res.data)
         setActiveUserData(res.data)
     } catch (error) {
         console.log(error)

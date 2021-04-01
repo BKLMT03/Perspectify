@@ -44,7 +44,8 @@ const Login = () => {
             console.log(response)
             context.user.user = response.data
         })
-        
+
+        window.location.replace('/')
     }
 
     const handleEmailChange = (e, index) => {

@@ -7,8 +7,6 @@ import Carousel from "react-bootstrap/Carousel";
 import {Link} from 'react-router-dom'
 
 const Carosel = ({data, query, relatedOrTrending}) => {
-  console.log(data)
-  console.log(query)
   const reloadPage = () => {
     window.location.reload();
   }
