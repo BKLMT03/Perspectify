@@ -200,20 +200,20 @@ const Trending = (props) => {
     );
     console.log(gNewsDataQuery.data.articles);
     //filter for only approved news articles
-    var filtered = gNewsDataQuery.data.articles.filter(function(x) {
-      if(techX.includes(x.source.name) ||
-          sportsX.includes(x.source.name)||
-          superLeftX.includes(x.source.name)||
-          midLeftX.includes(x.source.name)||
-          centerX.includes(x.source.name)||
-          midRightX.includes(x.source.name)||
-          superRightX.includes(x.source.name)) {
-            return x;
-          } 
-    });
     // var filtered = gNewsDataQuery.data.articles.filter(function(x) {
-    //   return x !== undefined
+    //   if(techX.includes(x.source.name) ||
+    //       sportsX.includes(x.source.name)||
+    //       superLeftX.includes(x.source.name)||
+    //       midLeftX.includes(x.source.name)||
+    //       centerX.includes(x.source.name)||
+    //       midRightX.includes(x.source.name)||
+    //       superRightX.includes(x.source.name)) {
+    //         return x;
+    //       } 
     // });
+    var filtered = gNewsDataQuery.data.articles.filter(function(x) {
+      return x !== undefined
+    });
     console.log(filtered)
     if (filtered.length < 1) {
       const emptyText =
