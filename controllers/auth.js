@@ -7,9 +7,11 @@ const auth = require('../middleware/auth')
 exports.checkAuth = async (req, res, next) => {
     User.findById(req.user.id)
     .select('-password')
+    //return user minus password
     .then(user => res.json(user));
 }
 
+//login route
 exports.authUser = async (req, res, next) => {
     const {email, password} = req.body;
 

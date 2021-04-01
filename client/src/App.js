@@ -2,7 +2,7 @@ import "./App.css";
 import {React, useState, useEffect} from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Logo from "./components/Logo";
-import Container from "./components/Container";
+import ContainerX from "./components/Container";
 import Col from "./components/Col";
 import Navbar from "./components/Navbar";
 import Row from "./components/Row";
@@ -15,9 +15,15 @@ import SignUp from "./components/pages/SignUp";
 import Trending from "./components/Trending";
 import Profile from "./components/Profile";
 import DarkModeToggle from "react-dark-mode-toggle";
+import {loadUser} from './actions/authActions'
+import {useDispatch} from 'react-redux'
+//import Container from reactstrap
 
 function App() {
+  
   const [isDarkMode, setIsDarkMode] = useState(() => false);
+  const dispatch = useDispatch();
+  dispatch(loadUser())
 
   const changeBackground = () => {
     if (!isDarkMode) {
@@ -42,7 +48,7 @@ function App() {
     />
       <Logo />
       <Router>
-        <Container>
+        <ContainerX>
           <Row>
             <Col size="1">
               <Navbar />
@@ -60,7 +66,7 @@ function App() {
               <Route exact path="/profile" component={Profile} />
             </Col>
           </Row>
-        </Container>
+        </ContainerX>
         <Footer />
       </Router>
     </div>

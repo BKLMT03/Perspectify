@@ -9586,6 +9586,11 @@
   optionalDependencies:
     "fsevents" "^2.1.3"
 
+"react-strap@^0.0.1":
+  "integrity" "sha1-CPIsXioK5/R1zVgUuJ/AwFpnIV4="
+  "resolved" "https://registry.npmjs.org/react-strap/-/react-strap-0.0.1.tgz"
+  "version" "0.0.1"
+
 "react-transition-group@^4.4.1":
   "integrity" "sha512-Djqr7OQ2aPUiYurhPalTrVy9ddmFCCzwhqQmtN+J3+3DzLO209Fdr70QrN8Z3DsglWql6iY1lDWAfpFiBtuKGw=="
   "resolved" "https://registry.npmjs.org/react-transition-group/-/react-transition-group-4.4.1.tgz"

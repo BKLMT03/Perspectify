@@ -81,7 +81,7 @@ exports.addUser = async (req, res, next) => {
             email,
             password
         });
-        // Hcreate salt & hash
+        // create salt & hash using bcrypt
         bcrypt.genSalt(10, (err,salt) => {
             bcrypt.hash(newUser.password, salt, (err, hash) => {
                 if(err) throw err;
