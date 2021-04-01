@@ -1,17 +1,17 @@
-import { useState, useEffect, React } from "react";
-import { Link } from "react-router-dom";
-import axios from "axios";
-import Article from "../Article";
-import Card from "react-bootstrap/Card";
-import Container from "../Container";
-import Col from "../Col";
-import Header from "../Header";
-import Row from "react-bootstrap/Row";
-import news from "../../testnewsdata";
-import newsApiKeys from "../../config/apikeys";
-import stockApiKeys from "../../config/apikeys2";
-import { FaNewspaper } from "react-icons/fa";
-import Particles from "react-particles-js";
+import { useState, useEffect, React, useRef } from 'react'
+import { Link } from "react-router-dom"
+import axios from 'axios'
+import Article from '../Article'
+import Card from "react-bootstrap/Card"
+import Container from '../Container'
+import Col from '../Col'
+import Header from '../Header'
+import Row from 'react-bootstrap/Row'
+import news from '../../testnewsdata'
+import newsApiKeys from '../../config/apikeys'
+import stockApiKeys from '../../config/apikeys2'
+import { FaNewspaper } from 'react-icons/fa'
+import Particles from "react-particles-js"
 // import newsApiKeys from '../../config/apikeys'
 // import stockApiKeys from '../../config/apikeys2'
 import "./style.css";
@@ -56,7 +56,6 @@ const Trending = (props) => {
     GNEWS_KEY_EIGHT,
   ];
   ////////////////////////////////////////////////////////
-  console.log(gApiKeys);
   ////////////////////////////////////////////////////////
   const topics = [
     "business",
@@ -135,15 +134,19 @@ const Trending = (props) => {
   };
   // const arr = news;
   //line 12 is static news data imported from testnewsdata
+    const myRef = useRef(null)
+
+    const executeScroll = () => myRef.current.scrollIntoView() 
 
   const hoaxyApi = async () => {
     const options = {
       method: "GET",
       url: "https://api-hoaxy.p.rapidapi.com/articles",
       params: {
-        query: searchQuery + " AND date_published:[2016-10-28 TO 2016-12-04]",
-        sort_by: "relevant",
-        use_lucene_syntax: "true",
+        query: searchQuery + ' AND date_published:[2016-10-28 TO 2016-12-04]',
+        sort_by: 'relevant',
+
+        use_lucene_syntax: 'true'
       },
       headers: {
         "x-rapidapi-key": "069b892a66msh2d995309be35fddp16e393jsnbb12494f3f8d",
@@ -201,21 +204,21 @@ const Trending = (props) => {
     );
     console.log(gNewsDataQuery.data.articles);
     //filter for only approved news articles
-    // var filtered = gNewsDataQuery.data.articles.filter(function(x) {
-    //   if(techX.includes(x.source.name) ||
-    //       sportsX.includes(x.source.name)||
-    //       superLeftX.includes(x.source.name)||
-    //       midLeftX.includes(x.source.name)||
-    //       centerX.includes(x.source.name)||
-    //       midRightX.includes(x.source.name)||
-    //       superRightX.includes(x.source.name)) {
-    //         return x;
-    //       }
-    // });
-    var filtered = gNewsDataQuery.data.articles.filter(function (x) {
-      return x !== undefined;
+    var filtered = gNewsDataQuery.data.articles.filter(function(x) {
+      if(techX.includes(x.source.name) ||
+          sportsX.includes(x.source.name)||
+          superLeftX.includes(x.source.name)||
+          midLeftX.includes(x.source.name)||
+          centerX.includes(x.source.name)||
+          midRightX.includes(x.source.name)||
+          superRightX.includes(x.source.name)) {
+            return x;
+          } 
     });
-    console.log(filtered);
+    // var filtered = gNewsDataQuery.data.articles.filter(function(x) {
+    //   return x !== undefined
+    // });
+    console.log(filtered)
     if (filtered.length < 1) {
       const emptyText =
         emptyResults[
@@ -308,15 +311,17 @@ const Trending = (props) => {
   return (
     <Container>
       <Header />
-      <Row>
-        <div className="input-group pb-3 my-3 justify-content-center">
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              gNewsApiQuery();
-            }}
-          >
-            <div className="container">
+      <Row >
+          <div className='input-group pb-3 my-3 justify-content-center'>
+            <form
+              onSubmit={e => {
+                e.preventDefault()
+                executeScroll();
+                gNewsApiQuery();
+              }}
+              
+            >
+              <div className="container">
               <input
                 type="text"
                 className="form-control search"
@@ -392,24 +397,24 @@ const Trending = (props) => {
         </Row>
         {/* <button onClick={() => newsApi()}> Generate News </button> */}
         <Row>
-          <div>
-            {topicData.map((item) => {
-              if (item) {
-                return (
-                  <div className="topics">
-                    <Article
-                      trending={topicData}
-                      query={searchQuery}
-                      title={item.title}
-                      description={item.description}
-                      url={item.url}
-                      image={item.image}
-                      date={item.publishedAt.substr(0, 10)}
-                      source={item.source.name}
-                    />
-                  </div>
-                );
-              }
+          <div ref={myRef}>
+            {topicData.map(item => {
+                 if (item) {
+                  return (
+                    <div className='topics'>
+                      <Article
+                        trending={topicData}
+                        query={searchQuery}
+                        title={item.title}
+                        description={item.description}
+                        url={item.url}
+                        image={item.image}
+                        date={item.publishedAt.substr(0,10)}
+                        source={item.source.name}
+                      />
+                    </div>
+                  )
+                }
             })}
           </div>
           <h2>
@@ -419,15 +424,15 @@ const Trending = (props) => {
           </h2>
         </Row>
       </div>
-      <iframe
-        width="768"
-        height="432"
-        src="https://www.youtube.com/embed/FvWiCclESL8"
-        title="YouTube video player"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      {/* <iframe
+        width='768'
+        height='432'
+        src='https://www.youtube.com/embed/FvWiCclESL8'
+        title='YouTube video player'
+        frameborder='0'
+        allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
         allowfullscreen
-      ></iframe>
+      ></iframe> */}
     </Container>
   );
 };
