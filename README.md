@@ -2,6 +2,8 @@
 
 ## Description
 
+![Landing](/images/landing.gif)
+
 A wise person has said that the most important trait in the 21st century is intense curiosity. Curiosity allows you to progress. It helps you create and realize personal goals; it encourages progress and personal re-invention.
 
 More and more, algorithms are ru(i/n)ning our lives (as web developers, we acknowledge the irony here). Our interests and worldviews are being manipulated. We are being shielded from experiences and ideas that may make us uncomfortable.
@@ -26,11 +28,13 @@ The goal is to foster more intellectual discourse on important matters of the da
 
 ## Installation
 
-Simply navigate to the page [here](https://mysterious-chamber-03370.herokuapp.com/).
+Simply navigate to the page [here](https://perspectify.herokuapp.com/).
 
 ## Usage
 
 When you arrive at the site, you are automatically presented with ten articles covering a range of topics that coincide with current events from a variety of news sources representing a range of political ideologies. You can peruse the articles and click one if you'd like to read it. When you do, you'll be shown that article on our site along with related articles on the same topic. If you wish, you can navigate away from Perspectify and access the source of the article directly.
+
+![Trending](/images/trending.png)
 
 You can also search for your own news item, and you will be presented a series of available articles on that topic.
 
@@ -43,6 +47,8 @@ Members will also have a profile page that shows which articles they have read. 
 _We carefully curated media sources for our articles based on where they fell on the [Media Bias Chart 7.0](https://www.adfontesmedia.com/static-mbc/) published by [Ad Fontes Media](https://www.adfontesmedia.com) for US sources and [Media Bias/Fact Check](https://mediabiasfactcheck.com/) for Canadian Sources. The intention is to provide a range of centrist, liberal, and conservative points of view based on North American political ideologies on chosen topics. We cannot guarantee users will be presented a perfectly balanced set of results, but it is something we would like to strive to improve upon in the future._
 
 _We devised a scoring system based on where our sources fall on the media bias charts._
+
+![Bias Chart](/images/biasChart.png)
 
 ## Contributing
 
