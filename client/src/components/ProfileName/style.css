@@ -1,5 +1,6 @@
 .name {
     display: flex;
+    font-family: "Special Elite", cursive;
     font-size: 60px;
     max-width: 300px;
     max-height: 300px;
