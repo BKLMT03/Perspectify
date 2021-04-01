@@ -5,9 +5,12 @@
 
 * {
     box-sizing: border-box;
-    background-color: rgb(228, 228, 228);
+    /* background-color: rgb(228, 228, 228); */
 }
 
+body {
+    background-color: rgb(228,228,228) !important;
+}
 .btn {
     color: black;
     border: none;
@@ -19,6 +22,20 @@
     transition: all .2s ease-in-out;
     transform: scale(1.1);
 }
+
+.tsparticles-canvas-el {
+    position: absolute;
+    height: 100vh;
+    width: 100vh;
+    z-index: 0;
+}
+
+@media(max-width: 768px) {
+    .particles-canvas {
+        display: none;
+    }
+}
+
 
 @media (max-width: 320px) {
     .container {
