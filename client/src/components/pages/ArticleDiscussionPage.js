@@ -320,7 +320,7 @@ const ArticleDiscussionPage = (props) => {
   // new DOMParser().parseFromString(activeArticleContent, "text/xml")
 
   return (
-    <Container className="mt-5">
+    <Container className={"mt-5"}>
       <div>
         <Row className="justify-content-center">
           <div className="articleSection">

@@ -1,4 +1,4 @@
-import { useState, useEffect, React } from 'react'
+import { useState, useEffect, React, useRef } from 'react'
 import { Link } from "react-router-dom"
 import axios from 'axios'
 import Article from '../Article'
@@ -40,7 +40,6 @@ const Trending = props => {
   const GNEWS_KEY_EIGHT = process.env.REACT_APP_GNEWS_KEY_EIGHT
   const gApiKeys = [GNEWS_KEY_ONE, GNEWS_KEY_TWO, GNEWS_KEY_THREE, GNEWS_KEY_FOUR, GNEWS_KEY_FIVE, GNEWS_KEY_SIX, GNEWS_KEY_SEVEN, GNEWS_KEY_EIGHT]
   ////////////////////////////////////////////////////////
-  console.log(gApiKeys)
   ////////////////////////////////////////////////////////
   const topics = [
     'business',
@@ -77,6 +76,9 @@ const Trending = props => {
   }
   // const arr = news;
   //line 12 is static news data imported from testnewsdata
+    const myRef = useRef(null)
+
+    const executeScroll = () => myRef.current.scrollIntoView() 
 
   const hoaxyApi = async () => {
     const options = {
@@ -85,6 +87,7 @@ const Trending = props => {
       params: {
         query: searchQuery + ' AND date_published:[2016-10-28 TO 2016-12-04]',
         sort_by: 'relevant',
+
         use_lucene_syntax: 'true'
       },
       headers: {
@@ -136,20 +139,20 @@ const Trending = props => {
     const gNewsDataQuery = await axios.get("https://gnews.io/api/v4/search?q=" + searchQuery + "&language=en&country=us&sortby=publishedAt&token=" + key)
     console.log(gNewsDataQuery.data.articles)
     //filter for only approved news articles
-    // var filtered = gNewsDataQuery.data.articles.filter(function(x) {
-    //   if(techX.includes(x.source.name) ||
-    //       sportsX.includes(x.source.name)||
-    //       superLeftX.includes(x.source.name)||
-    //       midLeftX.includes(x.source.name)||
-    //       centerX.includes(x.source.name)||
-    //       midRightX.includes(x.source.name)||
-    //       superRightX.includes(x.source.name)) {
-    //         return x;
-    //       } 
-    // });
     var filtered = gNewsDataQuery.data.articles.filter(function(x) {
-      return x !== undefined
+      if(techX.includes(x.source.name) ||
+          sportsX.includes(x.source.name)||
+          superLeftX.includes(x.source.name)||
+          midLeftX.includes(x.source.name)||
+          centerX.includes(x.source.name)||
+          midRightX.includes(x.source.name)||
+          superRightX.includes(x.source.name)) {
+            return x;
+          } 
     });
+    // var filtered = gNewsDataQuery.data.articles.filter(function(x) {
+    //   return x !== undefined
+    // });
     console.log(filtered)
     if (filtered.length < 1) {
       const emptyText =
@@ -247,8 +250,10 @@ const Trending = props => {
             <form
               onSubmit={e => {
                 e.preventDefault()
+                executeScroll();
                 gNewsApiQuery();
               }}
+              
             >
               <div className="container">
               <input
@@ -275,9 +280,9 @@ const Trending = props => {
       <div className='container-fluid border' id="trending-section">
         <a href="#trending-section"><h1 className='trending pt-4 animate__animated animate__pulse'>{headerState}</h1></a>
         <Row className="justify-content-center">
-          <Card className="keyCard">
-                <h4 style={{ backgroundColor: "white"}}>Source Key</h4>
-                <p style={{ backgroundColor: "white" }}>
+          <Card className="keyCard" >
+                <h4>Source Key</h4>
+                <p>
                   The coloured borders represent the type of article and/or the
                   ideological leaning of the source. See <Link to="/about">About</Link>{' '}
                   page for more information.
@@ -322,7 +327,7 @@ const Trending = props => {
         </Row>
         {/* <button onClick={() => newsApi()}> Generate News </button> */}
         <Row>
-          <div>
+          <div ref={myRef}>
             {topicData.map(item => {
                  if (item) {
                   return (
@@ -349,7 +354,7 @@ const Trending = props => {
           </h2>
         </Row>
       </div>
-      <iframe
+      {/* <iframe
         width='768'
         height='432'
         src='https://www.youtube.com/embed/FvWiCclESL8'
@@ -357,7 +362,7 @@ const Trending = props => {
         frameborder='0'
         allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
         allowfullscreen
-      ></iframe>
+      ></iframe> */}
     </Container>
   )
 }

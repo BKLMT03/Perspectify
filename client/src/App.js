@@ -1,5 +1,5 @@
 import "./App.css";
-import React from "react";
+import {React, useState, useEffect} from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Logo from "./components/Logo";
 import Container from "./components/Container";
@@ -14,10 +14,32 @@ import Login from "./components/pages/Login";
 import SignUp from "./components/pages/SignUp";
 import Trending from "./components/Trending";
 import Profile from "./components/Profile";
+import DarkModeToggle from "react-dark-mode-toggle";
 
 function App() {
+  const [isDarkMode, setIsDarkMode] = useState(() => false);
+
+  const changeBackground = () => {
+    if (!isDarkMode) {
+    document.documentElement.style.setProperty("--color-secondary", "rgb(228, 228, 228)");
+    document.documentElement.style.setProperty("--color-text", "");
+    } else {
+      document.documentElement.style.setProperty("--color-secondary", "rgb(24, 25, 26)");
+      document.documentElement.style.setProperty("--color-text", "rgb(228, 228, 228)");
+    }
+    
+  }
+  useEffect(async () => {
+    await changeBackground();
+    
+    })
   return (
     <div>
+      <DarkModeToggle
+      onChange={setIsDarkMode}
+      checked={isDarkMode}
+      size={80}
+    />
       <Logo />
       <Router>
         <Container>
