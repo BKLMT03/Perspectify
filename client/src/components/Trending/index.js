@@ -134,9 +134,9 @@ const Trending = (props) => {
   };
   // const arr = news;
   //line 12 is static news data imported from testnewsdata
-    const myRef = useRef(null)
+    const myRef = useRef()
 
-    const executeScroll = () => myRef.current.scrollIntoView() 
+  const executeScroll = () => myRef.current.scrollIntoView() 
 
   const hoaxyApi = async () => {
     const options = {
@@ -228,6 +228,7 @@ const Trending = (props) => {
     }
     setTopicData(filtered);
     setHeaderState("Search results...");
+    await executeScroll();
   };
 
   const commonQuery = async (data) => {
@@ -316,8 +317,8 @@ const Trending = (props) => {
             <form
               onSubmit={e => {
                 e.preventDefault()
-                executeScroll();
                 gNewsApiQuery();
+                
               }}
               
             >
@@ -414,7 +415,7 @@ const Trending = (props) => {
                       />
                     </div>
                   )
-                }
+                } else {return(<div ref={myRef}></div>)}
             })}
           </div>
           <h2>
