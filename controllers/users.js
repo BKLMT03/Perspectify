@@ -1,4 +1,6 @@
 const User = require('../models/User')
+const bcrypt = require('bcryptjs')
+const jwt = require('jsonwebtoken')
 
 exports.getUsers = async (req, res, next) => {
     const query = req.query;
@@ -61,33 +63,81 @@ exports.getUsers = async (req, res, next) => {
 }
 
 exports.addUser = async (req, res, next) => {
-    const findUser = await User.find({email: req.body.email}, (err, user) => {
-        if (user.length) {
-            res.json({
-                message: "Email is already registered"
-            })
-        } else {
-            try {
-                const {first_name, last_name, email, password, image} = req.body;
-                const user = User.create(req.body);
-                return res.status(201).json({
-                    success: true,
-                    data: user
-            })
-            } catch (error) {
-                if (err.name === 'ValidationError') {
-                    const messages = Object.values(err.errors).map(val => val.message)
-                    return res.status(400).json({
-                        success: false,
-                        error: messages
-                    }) 
-                } else {
-                    return res.status(500).json({
-                        success: false,
-                        error: "Server error"
+    const {first_name, last_name, email, password} = req.body;
+
+    if (!first_name || !last_name || !email || !password) {
+        return res.status(400).json({
+            msg: "Please enter all fields!"
+        })
+    }
+
+    //check for existing user
+    User.findOne({email})
+    .then(user => {
+        if(user) return res.status(400).json({msg: "User already registered"})
+        const newUser = new User({
+            first_name,
+            last_name,
+            email,
+            password
+        });
+        // create salt & hash using bcrypt
+        bcrypt.genSalt(10, (err,salt) => {
+            bcrypt.hash(newUser.password, salt, (err, hash) => {
+                if(err) throw err;
+                newUser.password = hash;
+                newUser.save()
+                    .then(user => {
+
+                        jwt.sign(
+                            {id: user.id},
+                            process.env.jwtSecret,
+                            {expiresIn: 3600 },
+                            (err, token) => {
+                                if(err) throw err;
+                                
+                                res.json({
+                                    user: {
+                                        token,
+                                        id: user.id,
+                                        name: user.first_name + " " + user.last_name,
+                                        email: user.email
+                                    }
+                                })
+                            }
+                        )
                     })
-                }
-            }
-        }
-    });
+            })
+        })
+    })
+
+    // const findUser = await User.find({email: req.body.email}, (err, user) => {
+    //     if (user.length) {
+    //         res.json({
+    //             message: "Email is already registered"
+    //         })
+    //     } else {
+    //         try {
+    //             const {first_name, last_name, email, password, image} = req.body;
+    //             const user = User.create(req.body);
+    //             return res.status(201).json({
+    //                 success: true,
+    //                 data: user
+    //         })
+    //         } catch (error) {
+    //             if (err.name === 'ValidationError') {
+    //                 const messages = Object.values(err.errors).map(val => val.message)
+    //                 return res.status(400).json({
+    //                     success: false,
+    //                     error: messages
+    //                 }) 
+    //             } else {
+    //                 return res.status(500).json({
+    //                     success: false,
+    //                     error: "Server error"
+    //                 })
+    //             }
+    //         }
+    //     }
+    // });
 }

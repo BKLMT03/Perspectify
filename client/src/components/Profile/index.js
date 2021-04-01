@@ -24,12 +24,12 @@ const Profile = (props) => {
                 <Row><h3>Recent Activity</h3></Row>
                 <Row><Col size="8"><DonutChart></DonutChart></Col>
                     <Col size="4"><Row><h5>Your Activities</h5></Row>
-                        <Row><div className="recent-activity-item">You read this article</div></Row>
-                        <Row><div className="recent-activity-item">You read this article</div></Row>
-                        <Row><div className="recent-activity-item">You read this article</div></Row>
-                        <Row><div className="recent-activity-item">You read this article</div></Row>
-                        <Row><div className="recent-activity-item">You read this article</div></Row>
-                        <Row><div className="recent-activity-item">You read this article</div></Row>
+                        <Row><div className="recent-activity-item">-------------</div></Row>
+                        <Row><div className="recent-activity-item">-------------</div></Row>
+                        <Row><div className="recent-activity-item">-------------</div></Row>
+                        <Row><div className="recent-activity-item">-------------</div></Row>
+                        <Row><div className="recent-activity-item">-------------</div></Row>
+                        <Row><div className="recent-activity-item">-------------</div></Row>
                         
                     </Col>
                 </Row>
@@ -39,7 +39,7 @@ const Profile = (props) => {
             </br>
             <Row>
                 <Col size="4">
-                    <Article />
+                    {/* saved articles here */}
                 </Col>
 
             </Row>

@@ -1,23 +1,31 @@
-import {React, useState} from 'react'
+import {React, useState, useContext} from 'react'
 import axios from 'axios'
 import './Login.css'
+import {GlobalContext} from '../../context/GlobalState'
 
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [activeUserData, setActiveUserData] = useState('');
+    const [loginStatus, setLoginStatus] = useState(false);
+
+    const context = useContext(GlobalContext)
+    console.log(context)
 
     const validateLogin = async () => {
+        
         const config = {
             headers: {
               'Content-type': 'application/json'
             }
           }
-          const res = await axios.get("/api/v1/users", {
-            params: { email: email, password: password},
-          });
+          const res = await axios.post("/api/v1/auth", 
+            { email: email, password: password},
+          );
           if (res.status === 200 || 304) {
               console.log("logged in")
+              console.log(res.data)
+              setLoginStatus(true);
               setActiveUserData(res.data)
               clearInputs();
               

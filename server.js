@@ -4,6 +4,7 @@ const dotenv = require('dotenv')
 const cors = require('cors');
 const colors = require('colors')
 const morgan = require('morgan')
+const jwt = require('jsonwebtoken')
 const connectDB = require('./config/db')
 
 dotenv.config({path: './config/config.env'})
@@ -15,6 +16,7 @@ const comments = require('./routes/comments')
 const users = require('./routes/users')
 const articles = require('./routes/articles')
 const news = require('./routes/news')
+const auth = require('./routes/auth')
 
 const app = express();
 
@@ -29,6 +31,7 @@ app.use('/api/v1/comments', comments)
 app.use('/api/v1/users', users)
 app.use('/api/v1/articles', articles)
 app.use('/api/v1/news', news)
+app.use('/api/v1/auth', auth)
 
 //production deployment after running npm run build and having build folder
 if (process.env.NODE_ENV === 'production') {
