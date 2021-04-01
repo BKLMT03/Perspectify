@@ -4,7 +4,9 @@ const {getComments, addComment} = require('../controllers/comments')
 const auth = require('../middleware/auth')
 
 router.route('/')
-    .get(auth, getComments)
-    .post(auth, addComment)
+    .get(getComments)
+    .post(addComment)
+    // .get(auth, getComments)
+    // .post(auth, addComment)
 
 module.exports = router;

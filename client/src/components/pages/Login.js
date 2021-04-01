@@ -7,29 +7,32 @@ const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [activeUserData, setActiveUserData] = useState('');
+    const [loginStatus, setLoginStatus] = useState(false);
 
-    const {loadUser} = useContext(GlobalContext)
+    const context = useContext(GlobalContext)
+    console.log(context)
 
     const validateLogin = async () => {
-
         
-        // const config = {
-        //     headers: {
-        //       'Content-type': 'application/json'
-        //     }
-        //   }
-        //   const res = await axios.get("/api/v1/users", {
-        //     params: { email: email, password: password},
-        //   });
-        //   if (res.status === 200 || 304) {
-        //       console.log("logged in")
-        //       setActiveUserData(res.data)
-        //       clearInputs();
+        const config = {
+            headers: {
+              'Content-type': 'application/json'
+            }
+          }
+          const res = await axios.post("/api/v1/auth", 
+            { email: email, password: password},
+          );
+          if (res.status === 200 || 304) {
+              console.log("logged in")
+              console.log(res.data)
+              setLoginStatus(true);
+              setActiveUserData(res.data)
+              clearInputs();
               
-        //   } else {
-        //       console.log('something went wrong')
-        //       clearInputs();
-        //   }
+          } else {
+              console.log('something went wrong')
+              clearInputs();
+          }
           
     }
 

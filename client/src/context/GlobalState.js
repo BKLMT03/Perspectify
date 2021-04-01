@@ -14,27 +14,26 @@ export const GlobalContext = createContext(initialState);
 //Provider component
 
 export const GlobalProvider = ({children }) => {
-    const [state, dispatch] = useReducer(AppReducer, initialState)
+    // const [state, dispatch] = useReducer(AppReducer, initialState)
+    const [user, setUser] = useState(initialState)
 
     //actions
-    function loadUser (dispatch, getState) {
-        dispatch({type: 'USER_LOADING'});
-        axios.get('/api/v1/auth', tokenConfig(getState))
-        .then(res => dispatch({
-            type: 'USER_LOADED',
-            payload: res.data
-        }))
-        .catch(err => {
-            dispatch({
-                type: 'AUTH_ERROR'
-            })
-        })
-    }
+    // function loadUser (dispatch, getState) {
+    //     dispatch({type: 'USER_LOADING'});
+    //     axios.get('/api/v1/auth', tokenConfig(getState))
+    //     .then(res => dispatch({
+    //         type: 'USER_LOADED',
+    //         payload: res.data
+    //     }))
+    //     .catch(err => {
+    //         dispatch({
+    //             type: 'AUTH_ERROR'
+    //         })
+    //     })
+    // }
 
-    return (<GlobalContext.Provider value={{
-        token: state.token,
-        user: state.user,
-        loadUser
+    return (<GlobalContext.Provider value={{ 
+        user: user
         }}>
         {children}
     </GlobalContext.Provider>)
