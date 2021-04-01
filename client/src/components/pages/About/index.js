@@ -30,9 +30,9 @@ function About() {
         </section>
         <br />
         <section>
-          <strong>Perspectify</strong> helps you rise above the algorithm and jostle
-          your comfort so you can better develop your own ideas and form your
-          own well-informed opinions on current events.
+          <strong>Perspectify</strong> helps you rise above the algorithm and
+          jostle your comfort so you can better develop your own ideas and form
+          your own well-informed opinions on current events.
         </section>
         <br />
         <br />
@@ -62,12 +62,16 @@ function About() {
             Media Bias Chart 7.0
           </a>{" "}
           published by{" "}
-          <a href="https://www.adfontesmedia.com">Ad Fontes Media</a>. The
-          intention is to provide a range of centrist, liberal, and conservative
-          points of view based on North American political ideologies on chosen
-          topics. We cannot guarantee users will be presented a perfectly
-          balanced set of results. It is always best to check sources, and if
-          something doesn't feel right, dive deeper.{" "}
+          <a href="https://www.adfontesmedia.com">Ad Fontes Media</a> for US
+          sources and{" "}
+          <a href="https://mediabiasfactcheck.com/" target="_blank">
+            Media Bias/Fact Check
+          </a>{" "}
+          for Canadian Sources. The intention is to provide a range of centrist,
+          liberal, and conservative points of view based on North American
+          political ideologies on chosen topics. We cannot guarantee users will
+          be presented a perfectly balanced set of results. It is always best to
+          check sources, and if something doesn't feel right, dive deeper.{" "}
         </section>
         <section className="disclaimer">
           &#8273; We devised a scoring system based on where our sources fall on
@@ -76,11 +80,15 @@ function About() {
             Media Bias Chart 7.0
           </a>{" "}
           published by{" "}
-          <a href="https://www.adfontesmedia.com">Ad Fontes Media</a>. The goal
-          is to show users whether they exposed themselves to a balanced set of
-          opinions based on North American politial ideologies, but does not
-          purport to represent an assessment of the user's actual personal
-          ideological leanings.
+          <a href="https://www.adfontesmedia.com">Ad Fontes Media</a> for US
+          sources and{" "}
+          <a href="https://mediabiasfactcheck.com/" target="_blank">
+            Media Bias/Fact Check
+          </a>{" "}
+          for Canadian Sources. The goal is to show users whether they exposed
+          themselves to a balanced set of opinions based on North American
+          politial ideologies, but does not purport to represent an assessment
+          of the user's actual personal ideological leanings.
         </section>
       </Row>
     </Container>
