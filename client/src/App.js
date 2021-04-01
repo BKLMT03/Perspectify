@@ -1,8 +1,8 @@
 import "./App.css";
-import {React, useState, useEffect} from "react";
+import {React, useState, useEffect, useContext} from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Logo from "./components/Logo";
-import Container from "./components/Container";
+import ContainerX from "./components/Container";
 import Col from "./components/Col";
 import Navbar from "./components/Navbar";
 import Row from "./components/Row";
@@ -16,9 +16,14 @@ import Profile from "./components/Profile";
 import Particles from "./components/Particles"
 import "bootstrap/dist/css/bootstrap.min.css";
 import DarkModeToggle from "react-dark-mode-toggle";
+import {GlobalProvider, GlobalContext} from './context/GlobalState'
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(() => false);
+  // const {loadUser} = useContext(GlobalContext)
+  // console.log(context)
+  // const dispatch = useDispatch();
+  // dispatch(loadUser())
 
   const changeBackground = () => {
     if (!isDarkMode) {
@@ -32,10 +37,9 @@ function App() {
   }
   useEffect(async () => {
     await changeBackground();
-    
     })
   return (
-    <div>
+    <GlobalProvider>
       <Particles />
       <DarkModeToggle
       onChange={setIsDarkMode}
@@ -44,7 +48,7 @@ function App() {
     />
       <Logo />
       <Router>
-        <Container>
+        <ContainerX>
           <Row>
             <Col size="1">
               <Navbar />
@@ -62,10 +66,10 @@ function App() {
               <Route exact path="/profile" component={Profile} />
             </Col>
           </Row>
-        </Container>
+        </ContainerX>
         <Footer />
       </Router>
-    </div>
+    </GlobalProvider>
   );
 }
 
