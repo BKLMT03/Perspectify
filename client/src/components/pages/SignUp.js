@@ -106,7 +106,7 @@ const SignUp = () => {
                 <button type="submit" className={"btn btn-block"}
                 onClick={addUser}>Sign Up</button>
                 <p className="forgot-password text-right">
-                    Already registered <a href="./login">Sign in</a>
+                    Already registered? <a href="./login">Log in</a>
                 </p>
             </form>
             </div>

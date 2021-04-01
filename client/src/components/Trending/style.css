@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@500&display=swap');
+
 .trending {
     font-family: "Special Elite", cursive;
     color: rgb(42, 24, 24);
@@ -42,14 +43,22 @@
     font-family: "Comfortaa", cursive;
 }
 
+/* .form-control.search {
+    border-radius: 50px;
+    width: 700px;
+    text-align: center;
+    height: 50px;
+    font-family: 'Comfortaa', cursive;
+} */
+
 .sourceKey {
     text-align: center;
     justify-content: center;
     font-size: 0.8rem;
-    background-color: white
+    background-color: white;
 }
 
- .keyCard {
+.keyCard {
     font-family: "Comfortaa", cursive;
     border: solid 1px black;
     display: flex;

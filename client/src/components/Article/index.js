@@ -93,8 +93,9 @@ const Article = ({trending, query, title, description, url, image, date, source}
         <div className='card-body' >
         <h5 className='card-title'>{title}</h5>
           <p className='card-text'>
-            {date}
+            {date} {source}
           </p>
+          
         
         </div>
         </div>
