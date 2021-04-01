@@ -3,14 +3,17 @@ import { Doughnut } from '@reactchartjs/react-chart.js'
 
 const DonutChart = () => {
   const data = {
-    labels: ['Liberal', 'Conservative', 'Other'],
+    labels: ['Very Liberal', 'Skews Liberal', 'Centrist', 'Skews Conservative', 'Very Conservative'],
     datasets: [
       {
         label: '# of Votes',
-        data: [12, 19],
+        data: [12, 19, 7, 4, 20],
         backgroundColor: [
-          'rgba(255, 99, 132, 0.2)',
-          'rgba(54, 162, 235, 0.2)',
+          'pink',
+          'yellow',
+          'green',
+          'orange',
+          'purple'
         ],
         borderColor: [
           'rgba(255, 99, 132, 1)',
