@@ -2,7 +2,7 @@
 
 ## Description
 
-![Landing](/images/landing.gif)
+![Landing](/images/Landing.gif)
 
 A wise person has said that the most important trait in the 21st century is intense curiosity. Curiosity allows you to progress. It helps you create and realize personal goals; it encourages progress and personal re-invention.
 
