@@ -1,9 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@500&display=swap');
 
+/* Trending Topics Header */
+
 .trending {
     font-family: "Special Elite", cursive;
-    color: rgb(42, 24, 24);
-    text-shadow: 0 0 5px rgb(65, 0, 0);
+    color: black;
+    text-shadow: 0 0 8px rgb(92, 1, 1);
     font-size: 2rem;
     letter-spacing: 1px;
     padding: 20px
