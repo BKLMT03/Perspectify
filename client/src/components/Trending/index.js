@@ -302,7 +302,7 @@ const Trending = (props) => {
   };
 
   useEffect(async () => {
-    // await newsApi();
+    await gNewsApi();
   }, []);
 
   return (
