@@ -42,6 +42,8 @@ Anyone is free to browse the site and access articles.
 
 Members of the site are able to do more. If you search for a topic (say, "COVID-19 Vaccine"), you can not only read articles on that topic, but you are also able to start or add to a discussion thread on that topic. What's more is that when you comment, the thread will show how many articles you have read on that topic. The implication is that the more you have read up on that topic, the more you have earned your right to an opinion on that topic.
 
+![Activity Chart](/images/activity.png)
+
 Members will also have a profile page that shows which articles they have read. There is a chart that aggregates the political ideoligies of all the articles they have chosen to consume, providing an evaluation of how balanced their readings have been.
 
 _We carefully curated media sources for our articles based on where they fell on the [Media Bias Chart 7.0](https://www.adfontesmedia.com/static-mbc/) published by [Ad Fontes Media](https://www.adfontesmedia.com) for US sources and [Media Bias/Fact Check](https://mediabiasfactcheck.com/) for Canadian Sources. The intention is to provide a range of centrist, liberal, and conservative points of view based on North American political ideologies on chosen topics. We cannot guarantee users will be presented a perfectly balanced set of results, but it is something we would like to strive to improve upon in the future._
