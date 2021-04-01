@@ -1,6 +1,6 @@
 import "./App.css";
 import {React, useState, useEffect} from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import Logo from "./components/Logo";
 import Container from "./components/Container";
 import Col from "./components/Col";
@@ -8,12 +8,13 @@ import Navbar from "./components/Navbar";
 import Row from "./components/Row";
 import Footer from "./components/Footer";
 import ArticleDiscussionPage from "./components/pages/ArticleDiscussionPage";
-import "bootstrap/dist/css/bootstrap.min.css";
 import About from "./components/pages/About"
 import Login from "./components/pages/Login";
 import SignUp from "./components/pages/SignUp";
 import Trending from "./components/Trending";
 import Profile from "./components/Profile";
+import Particles from "./components/Particles"
+import "bootstrap/dist/css/bootstrap.min.css";
 import DarkModeToggle from "react-dark-mode-toggle";
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
     })
   return (
     <div>
+      <Particles />
       <DarkModeToggle
       onChange={setIsDarkMode}
       checked={isDarkMode}

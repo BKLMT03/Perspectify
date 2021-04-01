@@ -8,7 +8,12 @@
 
 * {
     box-sizing: border-box;
-    background-color: var(--color-secondary);
+    /* background-color: var(--color-secondary); */
+}
+
+    /* just trying this out to get that gray out of the source key card */
+body {
+    background-color: var(--color-secondary) !important
 }
 
 p {
@@ -40,9 +45,19 @@ h5 {
     transform: scale(1.1);
 }
 
-#news-turq {
-    color: turquoise
+.tsparticles-canvas-el {
+    position: absolute;
+    height: 100vh;
+    width: 100vh;
+    z-index: 0;
 }
+
+@media(max-width: 768px) {
+    .particles-canvas {
+        display: none;
+    }
+}
+
 
 @media (max-width: 320px) {
     .container {
