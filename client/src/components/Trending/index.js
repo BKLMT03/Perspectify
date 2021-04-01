@@ -8,12 +8,8 @@ import Col from '../Col'
 import Header from '../Header'
 import Row from 'react-bootstrap/Row'
 import news from '../../testnewsdata'
-import newsApiKeys from '../../config/apikeys'
-import stockApiKeys from '../../config/apikeys2'
 import { FaNewspaper } from 'react-icons/fa'
 import Particles from "react-particles-js"
-// import newsApiKeys from '../../config/apikeys'
-// import stockApiKeys from '../../config/apikeys2'
 import "./style.css";
 
 const Trending = (props) => {
