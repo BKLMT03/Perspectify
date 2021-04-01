@@ -9,6 +9,8 @@ h3 {
 
 .stretch {
     letter-spacing: 0.25rem;
+    padding-bottom: 15px;
+    font-weight: bold;
 }
 section {
     font-size: 1.1rem;

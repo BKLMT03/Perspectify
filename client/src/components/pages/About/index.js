@@ -9,7 +9,7 @@ function About() {
       <Row>
         <hr />
         <h3 className="stretch">per &#183; SPEK &#183; ti &#183; fy</h3>
-        <span className="definition">VERB: </span>
+        <p className="definition">VERB: </p>
         <p className="definition">
           To put something into a wider, deeper perspective.
         </p>
