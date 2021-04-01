@@ -15,7 +15,7 @@ import SignUp from "./components/pages/SignUp";
 import Trending from "./components/Trending";
 import Profile from "./components/Profile";
 
-function App() {
+function App () {
   return (
     <div>
       <Logo />
