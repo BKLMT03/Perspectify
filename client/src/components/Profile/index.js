@@ -1,4 +1,4 @@
-import {React, useState, useEffect} from "react"
+import {React, useState, useContext, useEffect, useMemo} from 'react'
 import Article from "../Article"
 import Col from "../Col"
 import Row from "../Row"
@@ -8,15 +8,36 @@ import Container from "../Container"
 import DonutChart from "../DonutChart"
 import "./style.css"
 import axios from "axios"
+import {GlobalContext} from '../../context/GlobalState'
 
 const Profile = (props) => {
+
+    const context = useContext(GlobalContext)
+    const[user, setUser] = useState(null)
+
+    const userAuthenticated = async () => {
+        const res = await axios.get('/api/v1/auth', {
+            headers: {
+                'x-auth-token' : localStorage.getItem("token")
+            }
+        }).then((response) => {
+            console.log(response)
+            context.user.user = response.data
+            setUser(response.data)
+        })
+        
+    }
+
+    useEffect(async () => {
+        await userAuthenticated();
+      }, []);
     
 
     return (
         <div>
             <Row>
                 <Col size="2"><ProfilePic></ProfilePic></Col>
-                <Col size="3"><ProfileName data={props.location.state.data.data}></ProfileName></Col>
+                <Col size="3"><ProfileName data={user}></ProfileName></Col>
             </Row>
             <br>
             </br>
@@ -39,6 +60,7 @@ const Profile = (props) => {
             </br>
             <Row>
                 <Col size="4">
+                    <h2>Saved Articles </h2>
                     {/* saved articles here */}
                 </Col>
 

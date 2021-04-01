@@ -17,21 +17,6 @@ export const GlobalProvider = ({children }) => {
     // const [state, dispatch] = useReducer(AppReducer, initialState)
     const [user, setUser] = useState(initialState)
 
-    //actions
-    // function loadUser (dispatch, getState) {
-    //     dispatch({type: 'USER_LOADING'});
-    //     axios.get('/api/v1/auth', tokenConfig(getState))
-    //     .then(res => dispatch({
-    //         type: 'USER_LOADED',
-    //         payload: res.data
-    //     }))
-    //     .catch(err => {
-    //         dispatch({
-    //             type: 'AUTH_ERROR'
-    //         })
-    //     })
-    // }
-
     return (<GlobalContext.Provider value={{ 
         user: user
         }}>
