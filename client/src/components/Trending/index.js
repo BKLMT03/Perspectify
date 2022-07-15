@@ -9,7 +9,7 @@ import Header from '../Header'
 import Row from 'react-bootstrap/Row'
 import news from '../../testnewsdata'
 import { FaNewspaper } from 'react-icons/fa'
-import Particles from "react-particles-js"
+import Particles from "react-tsparticles";
 import "./style.css";
 
 const Trending = (props) => {

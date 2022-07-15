@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Typed from "react-typed";
+// import Typed from "react-typed";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
@@ -12,7 +12,7 @@ function Header() {
     <div className="container text-center header mb-5">
       <Row>
         <h3 className="subtitle mt-4 mb-5">
-          <Typed
+          {/* <Typed
             strings={[
               "Earn Your Opinion.",
               "Escape the echo chamber.",
@@ -24,7 +24,7 @@ function Header() {
             typeSpeed={80}
             backSpeed={40}
             loop
-          />
+          /> */}
         </h3>
       </Row>
       <Row>

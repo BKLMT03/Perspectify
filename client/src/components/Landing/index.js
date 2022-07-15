@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import Particles from "react-particles-js"
+import Particles from "react-tsparticles";
 
 const Landing = () => {
     return (
