@@ -87,18 +87,18 @@ const Login = () => {
                     onChange={(e) => handlePasswordChange(e)} />
                 </div>
 
-                <div className="form-group">
+                {/* <div className="form-group">
                     <div className="custom-control custom-checkbox">
                         <input type="checkbox" className="custom-control-input" id="customCheck1" />
                         <label className="custom-control-label" htmlFor="customCheck1">Remember me</label>
                     </div>
-                </div>
+                </div> */}
 
                 <button type="submit" className="btn btn-block"
                 href=""
                 >Submit</button>
                 <p className="forgot-password text-right">
-                    Forgot <a href="#">password?</a>
+                    <a href="#" onClick={(e) => validateLogin(e)}>Forgot password?</a>
                 </p>
             </form>
             </div>

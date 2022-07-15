@@ -1,4 +1,4 @@
-import {React, useState, useEffec} from 'react'
+import {React, useState, useEffect} from 'react'
 import { Doughnut } from '@reactchartjs/react-chart.js'
 
 const DonutChart = () => {

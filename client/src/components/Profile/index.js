@@ -39,7 +39,7 @@ const Profile = (props) => {
           <ProfilePic></ProfilePic>
         </Col>
         <Col size="3">
-          <ProfileName data={user}></ProfileName>
+          {/* <ProfileName data={user}></ProfileName> */}
         </Col>
       </Row>
       <br></br>

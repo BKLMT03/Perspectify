@@ -17,6 +17,7 @@ import Particles from "./components/Particles"
 import "bootstrap/dist/css/bootstrap.min.css";
 import DarkModeToggle from "react-dark-mode-toggle";
 import {GlobalProvider, GlobalContext} from './context/GlobalState'
+////////////////////xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(() => false);
@@ -38,6 +39,7 @@ function App() {
   useEffect(async () => {
     await changeBackground();
     })
+    ////////////////////xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
   return (
     <GlobalProvider>
       <Particles />
