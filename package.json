@@ -2,7 +2,7 @@
   "name": "perspectify",
   "version": "1.0.0",
   "engines": {
-    "node": "14.x"
+    "node": "16.x"
   },
   "description": "back end for perspectify",
   "main": "server.js",
@@ -30,8 +30,7 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.12.0",
     "morgan": "^1.10.0",
-    "react-particles-js": "^3.4.1",
-    "react-tsparticles": "^1.24.3",
+    "react-tsparticles": "^2.x",
     "react-typed": "^1.2.0"
   },
   "devDependencies": {
