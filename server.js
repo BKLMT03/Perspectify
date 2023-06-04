@@ -12,6 +12,8 @@ dotenv.config({path: './config/config.env'})
 //connect to mongodb
 connectDB();
 
+console.log('db connected')
+
 const comments = require('./routes/comments')
 const users = require('./routes/users')
 const articles = require('./routes/articles')
